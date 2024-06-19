@@ -17,7 +17,11 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am Liuyuan Jiang, a first-year PhD student in the Department of Electrical, Computer, and Systems Engineering at Rensselaer Polytechnic Institute, advised by Dr. Tianyi Chen. With a background in statistics and mathematics, my academic focus lies in the realms of Optimization and Machine Learning. 
+I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and Systems Engineering at Rensselaer Polytechnic Institute, advised by Dr. Tianyi Chen. With a background in statistics and mathematics, my academic focus lies in the realms of Optimization and Machine Learning. 
+
+# 📰 News
+
+- June 2024: Our paper is available: [A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints](https://arxiv.org/abs/2406.10148)
 
 # 📝 Publications 
 
