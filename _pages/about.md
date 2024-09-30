@@ -21,9 +21,12 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and
 
 # 📰 News
 
+- Sept 2024: Our paper is ACCEPTED by NeurIPS 2024: A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints
 - June 2024: Our paper is available: [A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints](https://arxiv.org/abs/2406.10148)
 
 # 📝 Publications 
+
+**Liuyuan Jiang**, Quan Xiao, Victor Tenorio, Fernando Real-Rojas, Antonio Marques, Tianyi Chen, "A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints", Neural Information Processing Systems 37, 2024
 
 # 🎖 Honors and Awards
 
