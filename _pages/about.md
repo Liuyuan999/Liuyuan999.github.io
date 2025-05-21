@@ -22,6 +22,8 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and
 # 📰 News
 - May 2025: Im joining in **IBM** for summer internship at Thomas J. Watson Research Center in Yorktown Heights, NY
 - May 2025: Our paper is ACCEPTED by **EUSIPCO 2025**: Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints
+- Apr 2025: I am hornored to be awarded Best Reviewer Award for AISTATS 2025
+- Dec 2024: I presenting my work A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints at NeurIPS 2024. See you at Vancouver
 - Sept 2024: Our paper is ACCEPTED by **NeurIPS 2024**: A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints
 - June 2024: Our paper is available: [A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints](https://arxiv.org/abs/2406.10148)
 
@@ -32,6 +34,8 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and
 **Liuyuan Jiang**, Quan Xiao, Victor Tenorio, Fernando Real-Rojas, Antonio Marques, Tianyi Chen, "A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints", Neural Information Processing Systems 37, 2024
 
 # 🎖 Honors and Awards
+
+**Best Reviewer Award** for AISTATS 2025
 
 # 📖 Educations
 - *2023 - Now*, PhD student in Computer & System Engineering, Rensselaer Polytechnic Institute
