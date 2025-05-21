@@ -20,11 +20,14 @@ redirect_from:
 I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and Systems Engineering at Rensselaer Polytechnic Institute, advised by Dr. Tianyi Chen. With a background in statistics and mathematics, my academic focus lies in the realms of Optimization and Machine Learning. 
 
 # 📰 News
-
-- Sept 2024: Our paper is ACCEPTED by NeurIPS 2024: A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints
+- May 2025: Im joining in **IBM** for summer internship at Thomas J. Watson Research Center in Yorktown Heights, NY
+- May 2025: Our paper is ACCEPTED by **EUSIPCO 2025**: Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints
+- Sept 2024: Our paper is ACCEPTED by **NeurIPS 2024**: A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints
 - June 2024: Our paper is available: [A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints](https://arxiv.org/abs/2406.10148)
 
 # 📝 Publications 
+
+**Liuyuan Jiang**, Quan Xiao, Tianyi Chen, "Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints",  33rd European Signal Processing Conference (EUSIPCO 2025), 2025
 
 **Liuyuan Jiang**, Quan Xiao, Victor Tenorio, Fernando Real-Rojas, Antonio Marques, Tianyi Chen, "A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints", Neural Information Processing Systems 37, 2024
 
