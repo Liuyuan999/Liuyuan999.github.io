@@ -47,4 +47,5 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and
 **Assessing Food Security Indicators and Livelihoods of Rural Households in Malawi: A Data Analysis Report for the Catholic Relief Services Project**
 
 # 💻 Internships
-- *2022.06 - 08*, Quantitative Analyst Intern, Hudsun Technology, China.
+- *2025.05 - 08*, **Research Intern**, IBM Research, Thomas J. Watson Research Center, Yorktown Heights, NY
+- *2022.06 - 08*, **Quantitative Analyst Intern**, Hudsun Technology, China.
