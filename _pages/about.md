@@ -40,7 +40,7 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and
 # 📖 Educations
 - *2023 - Now*, PhD student in Computer & System Engineering, Rensselaer Polytechnic Institute
 - *2022 - 2023*, MPS Applied Statistics, Cornell University
-- *2018 - 2022*, BSc Financial Mathematics, Xi-an Jiaotong-Liverpool University (University of Liverpool)
+- *2018 - 2022*, BSc Financial Mathematics, University of Liverpool
 
 # 💬 Project Experience
 - *2023.01-05* Master's Capstone Project, Cornell University, Ithaca, NY
