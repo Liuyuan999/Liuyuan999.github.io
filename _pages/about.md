@@ -37,7 +37,7 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and
 
 **AISTATS 2025 Best Reviewer Award**
 
-**NeurIPS 2023 scholar award**
+**NeurIPS 2024 scholar award**
 
 # 📖 Educations
 - *2023 - Now*, PhD student in Computer & System Engineering, Rensselaer Polytechnic Institute
