@@ -30,7 +30,7 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and
 
 # 📝 Publications 
 
-**Liuyuan Jiang**, Quan Xiao, Lisha Chen, Tianyi Chen, "IBeyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions",  arXiv preprint, 2025
+**Liuyuan Jiang**, Quan Xiao, Lisha Chen, Tianyi Chen, "Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions",  arXiv preprint, 2025
 
 **Liuyuan Jiang**, Quan Xiao, Tianyi Chen, "Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints",  33rd European Signal Processing Conference (EUSIPCO 2025), 2025
 
