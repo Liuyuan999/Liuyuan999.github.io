@@ -43,7 +43,8 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and
 **NeurIPS 2024 scholar award**
 
 # 📖 Educations
-- *2023 - Now*, PhD student in Computer & System Engineering, Rensselaer Polytechnic Institute
+- *2025 - 2028 (Exp)*, PhD student in Electrical & Computer Engineering, University of Rochester.
+- *2023 - 2025*, PhD student in Computer & System Engineering, Rensselaer Polytechnic Institute
 - *2022 - 2023*, MPS Applied Statistics, Cornell University
 - *2018 - 2022*, BSc Financial Mathematics, University of Liverpool
 
@@ -52,5 +53,5 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and
 **Assessing Food Security Indicators and Livelihoods of Rural Households in Malawi: A Data Analysis Report for the Catholic Relief Services Project**, supervised by Prof. David S. Matteson
 
 # 💻 Internships
-- *2025.05 - 08*, **Research Intern**, IBM Research, Thomas J. Watson Research Center, Yorktown Heights, NY
+- *2025.05 - 08*, **Research Intern**, IBM Research, Thomas J. Watson Research Center, Yorktown Heights, NY. Project: _Speech Understanding and Interaction for Granite Speech_. Mentor: Dr. Brian Kingsbury, Dr. Xiaodong Cui
 - *2022.06 - 08*, **Quantitative Analyst Intern**, Hudsun Technology, China.
