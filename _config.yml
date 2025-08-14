@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Liuyuan Jiang"
-description              : "PhD student at RPI, Troy, NY"
+description              : "PhD student at University of Rochester, Rochester, NY"
 repository               : "Liuyuan999/Liuyuan999.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -23,12 +23,12 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 author:
   name             : "Liuyuan Jiang"
   avatar           : "images/LiuyuanJiang_homepic.jpg"
-  bio              : "Rensselaer Polytechnic Institute"
-  location         : "Troy, NY"
+  bio              : "University of Rochester"
+  location         : "Rochester, NY"
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=7_BnQ3UAAAAJ&hl=en"
-  email            : "jiangl7@rpi.edu"
+  email            : "ljiang24@ur.rochester.edu"
   researchgate     :  # e.g., "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
