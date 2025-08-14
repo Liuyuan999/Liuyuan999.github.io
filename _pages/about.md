@@ -17,9 +17,14 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am Liuyuan Jiang, a PhD student in the Department of Electrical, Computer, and Systems Engineering at Rensselaer Polytechnic Institute, advised by Dr. Tianyi Chen. With a background in statistics and mathematics, my academic focus lies in the realms of Optimization and Machine Learning. 
+I am Liuyuan Jiang, a PhD student in the Department of Electrical and Computer Engineering at the University of Rochester, advised by Dr. Lisha Chen. Earlier, I was in the Phd program at Rensselaer Polytechnic Institute, advised by Dr. Tianyi Chen. With a background in statistics and mathematics, my academic focus lies in the realms of Optimization and Machine Learning. 
+
+# 🔥 Research Interest
+
+My research focuses on **bilevel optimization** and **multi-objective learning**, with applications spanning **financial pricing** models and **large language models (LLMs)**. I am particularly interested in developing efficient algorithms and theoretical insights that bridge the gap between optimization theory and real-world problems, enabling robust decision-making in complex, high-dimensional settings.
 
 # 📰 News
+- Aug 2025: Excited to join the Department of Electrical and Computer Engineering at the University of Rochester, where I will continue my Ph.D. research in Optimization.
 - Jul 2025: Our paper is available: [Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions](https://arxiv.org/abs/2507.20400). 
 - May 2025: I'm joining **IBM Research** for a summer internship at **Thomas J. Watson Research Center** in Yorktown Heights, NY, supervised by Dr. Brian Kingsbury, Dr. Xiaodong Cui
 - May 2025: Our paper is ACCEPTED by **EUSIPCO 2025**: [Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints](https://cmsworkshops.com/EUSIPCO2025/papers/accepted_papers.php)
