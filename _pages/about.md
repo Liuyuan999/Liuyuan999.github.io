@@ -37,7 +37,7 @@ My research focuses on **bilevel optimization** and **multi-objective learning**
 
 **Liuyuan Jiang**, Quan Xiao, Lisha Chen, Tianyi Chen, "Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions",  arXiv preprint, 2025
 
-**Liuyuan Jiang**, Quan Xiao, Tianyi Chen, "Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints",  33rd European Signal Processing Conference (EUSIPCO 2025), 2025
+**Liuyuan Jiang**, Quan Xiao, Tianyi Chen, "Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints",  33rd European Signal Processing Conference (EUSIPCO 2025), 2025. Available at: [https://cmsworkshops.com/EUSIPCO2025/Papers/Uploads/FinalPapers/PaperNum/1882/20250610085928_504568_1882.pdf](https://cmsworkshops.com/EUSIPCO2025/Papers/Uploads/FinalPapers/PaperNum/1882/20250610085928_504568_1882.pdf)
 
 **Liuyuan Jiang**, Quan Xiao, Victor Tenorio, Fernando Real-Rojas, Antonio Marques, Tianyi Chen, "A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints", Neural Information Processing Systems 37, 2024
 
