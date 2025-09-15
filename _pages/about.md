@@ -24,6 +24,7 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical and Computer E
 My research focuses on **bilevel optimization** and **multi-objective learning**, with applications spanning **financial pricing** models and **large language models (LLMs)**. I am particularly interested in developing efficient algorithms and theoretical insights that bridge the gap between optimization theory and real-world problems, enabling robust decision-making in complex, high-dimensional settings.
 
 # 📰 News
+- Sept 2025: Great to meet you in Sicily! I look forward to discussing my recent work at EUSIPCO 2025.
 - Aug 2025: Excited to join the Department of Electrical and Computer Engineering at the University of Rochester, where I will continue my Ph.D. research in Optimization.
 - Jul 2025: Our paper is available: [Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions](https://arxiv.org/abs/2507.20400). 
 - May 2025: I'm joining **IBM Research** for a summer internship at **Thomas J. Watson Research Center** in Yorktown Heights, NY, supervised by Dr. Brian Kingsbury, Dr. Xiaodong Cui
@@ -37,7 +38,7 @@ My research focuses on **bilevel optimization** and **multi-objective learning**
 
 **Liuyuan Jiang**, Quan Xiao, Lisha Chen, Tianyi Chen, "Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions",  arXiv preprint, 2025
 
-**Liuyuan Jiang**, Quan Xiao, Tianyi Chen, "Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints",  33rd European Signal Processing Conference (EUSIPCO 2025), 2025. Available at: [https://cmsworkshops.com/EUSIPCO2025/Papers/Uploads/FinalPapers/PaperNum/1882/20250610085928_504568_1882.pdf](https://cmsworkshops.com/EUSIPCO2025/Papers/Uploads/FinalPapers/PaperNum/1882/20250610085928_504568_1882.pdf)
+**Liuyuan Jiang**, Quan Xiao, Tianyi Chen, "Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints",  33rd European Signal Processing Conference (EUSIPCO 2025), 2025.
 
 **Liuyuan Jiang**, Quan Xiao, Victor Tenorio, Fernando Real-Rojas, Antonio Marques, Tianyi Chen, "A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints", Neural Information Processing Systems 37, 2024
 
