@@ -39,15 +39,15 @@ My research focuses on **bilevel optimization** and **multi-objective learning**
 
 ### Publications
 
-- **[ICASSP 2026 Submission]** *Liuyuan Jiang*, Xiaodong Cui, Brian Kingsbury, Tianyi Chen, Lisha Chen. *BiRQ: Bi-Level Self-Labeling Random Quantization for Self-Supervised Speech Recognition*, arXiv preprint, 2025.
+**[ICASSP 2026 Submission]** *Liuyuan Jiang*, Xiaodong Cui, Brian Kingsbury, Tianyi Chen, Lisha Chen. *BiRQ: Bi-Level Self-Labeling Random Quantization for Self-Supervised Speech Recognition*, arXiv preprint, 2025.
 
-- **[NeurIPS 2025 Accepted]** *Liuyuan Jiang*, Quan Xiao, Lisha Chen, Tianyi Chen. *Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions*.  
+**[NeurIPS 2025 Accepted]** *Liuyuan Jiang*, Quan Xiao, Lisha Chen, Tianyi Chen. *Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions*.  
   arXiv preprint, 2025.
 
-- **[EUSIPCO 2025]** *Liuyuan Jiang*, Quan Xiao, Tianyi Chen. *Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints*.  
+**[EUSIPCO 2025]** *Liuyuan Jiang*, Quan Xiao, Tianyi Chen. *Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints*.  
   33rd European Signal Processing Conference (EUSIPCO), 2025.
 
-- **[NeurIPS 2024]** *Liuyuan Jiang*, Quan Xiao, Victor M. Tenorio, Fernando Real-Rojas, Antonio G. Marques, Tianyi Chen. *A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints*. Neural Information Processing Systems (NeurIPS), 2024.
+**[NeurIPS 2024]** *Liuyuan Jiang*, Quan Xiao, Victor M. Tenorio, Fernando Real-Rojas, Antonio G. Marques, Tianyi Chen. *A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints*. Neural Information Processing Systems (NeurIPS), 2024.
 
 
 # 🎖 Honors and Awards
