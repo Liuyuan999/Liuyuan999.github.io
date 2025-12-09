@@ -24,7 +24,7 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical and Computer E
 My research focuses on **bilevel optimization** and **multi-objective learning**, with applications spanning **financial pricing** models and **large language models (LLMs)**. I am particularly interested in developing efficient algorithms and theoretical insights that bridge the gap between optimization theory and real-world problems, enabling robust decision-making in complex, high-dimensional settings.
 
 # 📰 News
-- Nov 2025: A unified analysis on the Alternative Update Scheme of Penalty-Based Gradient Descent on Bilevel Optimization with general coupled constraints. Our paper is available!
+- Nov 2025: A unified analysis on the Alternative Update Scheme of Penalty-Based Gradient Descent on Bilevel Optimization with general coupled constraints. Our paper is [Available](https://arxiv.org/pdf/2511.16796)!
 - Sept 2025: Our paper is available! [BiRQ: Bi-Level Self-Labeling Random Quantization for Self-Supervised Speech Recognition](https://www.arxiv.org/abs/2509.15430). Thank all my mentors from IBM and my academic advisors. Great work!
 - Sept 2025: Our paper get ACCEPTED by **NeurIPS 2025**: Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions. Big thanks to my co-authors and collaborators for their hard work and insights. Looking forward to sharing our ideas with the community this December!
 - Sept 2025: Great to meet you in Sicily! I look forward to discussing my recent work at EUSIPCO 2025.
@@ -41,15 +41,15 @@ My research focuses on **bilevel optimization** and **multi-objective learning**
 
 ### Publications
 
-**[Preprint]** *Liuyuan Jiang*, Quan Xiao, Lisha Chen, Tianyi Chen. *Efficient Penalty-Based Bilevel Methods: Improved Analysis, Novel Updates, and Flatness Condition*, arXiv preprint, 2025.
+**[Mathematical Programming Submission]** *Liuyuan Jiang*, Quan Xiao, Lisha Chen, Tianyi Chen. *Efficient Penalty-Based Bilevel Methods: Improved Analysis, Novel Updates, and Flatness Condition*, arXiv preprint, 2025.
 
 **[ICASSP 2026 Submission]** *Liuyuan Jiang*, Xiaodong Cui, Brian Kingsbury, Tianyi Chen, Lisha Chen. *BiRQ: Bi-Level Self-Labeling Random Quantization for Self-Supervised Speech Recognition*, arXiv preprint, 2025.
 
-**[NeurIPS 2025]** *Liuyuan Jiang*, Quan Xiao, Lisha Chen, Tianyi Chen. *Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions*. In Prof. of the 39th Annual Conference of Neural Information Processing Systems (NeurIPS), 2025.
+**[NeurIPS 2025]** *Liuyuan Jiang*, Quan Xiao, Lisha Chen, Tianyi Chen. *Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions*. In Prof. of the 39th Annual Conference of Neural Information Processing Systems (NeurIPS), San Diego, CA, USA, 2025.
 
-**[EUSIPCO 2025]** *Liuyuan Jiang*, Quan Xiao, Tianyi Chen. *Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints*. In Prof. of the 33rd European Signal Processing Conference (EUSIPCO), 2025.
+**[EUSIPCO 2025]** *Liuyuan Jiang*, Quan Xiao, Tianyi Chen. *Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints*. In Prof. of the 33rd European Signal Processing Conference (EUSIPCO), Palermo, Italy, 2025.
 
-**[NeurIPS 2024]** *Liuyuan Jiang*, Quan Xiao, Victor M. Tenorio, Fernando Real-Rojas, Antonio G. Marques, Tianyi Chen. *A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints*. In Prof. of the 38th Annual Conference of Neural Information Processing Systems (NeurIPS), 2024.
+**[NeurIPS 2024]** *Liuyuan Jiang*, Quan Xiao, Victor M. Tenorio, Fernando Real-Rojas, Antonio G. Marques, Tianyi Chen. *A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints*. In Prof. of the 38th Annual Conference of Neural Information Processing Systems (NeurIPS), Vancouver, BC, Canada, 2024.
 
 
 # 🎖 Honors and Awards
