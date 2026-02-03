@@ -24,7 +24,7 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical and Computer E
 My research focuses on **bilevel optimization** and **multi-objective learning**, with applications spanning **financial pricing** models and **large language models (LLMs)**. I am particularly interested in developing efficient algorithms and theoretical insights that bridge the gap between optimization theory and real-world problems, enabling robust decision-making in complex, high-dimensional settings.
 
 # 📰 News
-- Jan 2026: **CASSP 2026** acceptance: excited to share our summer work at IBM on [BiRQ, a self-supervised speech recognition method](https://arxiv.org/pdf/2509.15430).
+- Jan 2026: **ICASSP 2026** acceptance: excited to share our summer work at IBM on [BiRQ, a self-supervised speech recognition method](https://arxiv.org/pdf/2509.15430).
 - Nov 2025: A unified analysis on the Alternative Update Scheme of Penalty-Based Gradient Descent on Bilevel Optimization with general coupled constraints. Our paper is [Available](https://arxiv.org/pdf/2511.16796)!
 - Sept 2025: Our paper is available! [BiRQ: Bi-Level Self-Labeling Random Quantization for Self-Supervised Speech Recognition](https://www.arxiv.org/abs/2509.15430). Thank all my mentors from IBM and my academic advisors. Great work!
 - Sept 2025: Our paper get ACCEPTED by **NeurIPS 2025**: Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions. Big thanks to my co-authors and collaborators for their hard work and insights. Looking forward to sharing our ideas with the community this December!
