@@ -24,6 +24,7 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical and Computer E
 My research focuses on **bilevel optimization** and **multi-objective learning**, with applications spanning **financial pricing** models and **large language models (LLMs)**. I am particularly interested in developing efficient algorithms and theoretical insights that bridge the gap between optimization theory and real-world problems, enabling robust decision-making in complex, high-dimensional settings.
 
 # 📰 News
+- May 2026: I'm joining **IBM Research** for a summer internship at **Thomas J. Watson Research Center** in Yorktown Heights, NY. Looking forward to connecting with you!
 - Jan 2026: **ICASSP 2026** acceptance: excited to share our summer work at IBM on [BiRQ, a self-supervised speech recognition method](https://arxiv.org/pdf/2509.15430).
 - Nov 2025: A unified analysis on the Alternative Update Scheme of Penalty-Based Gradient Descent on Bilevel Optimization with general coupled constraints. Our paper is [Available](https://arxiv.org/pdf/2511.16796)!
 - Sept 2025: Our paper is available! [BiRQ: Bi-Level Self-Labeling Random Quantization for Self-Supervised Speech Recognition](https://www.arxiv.org/abs/2509.15430). Thank all my mentors from IBM and my academic advisors. Great work!
@@ -70,5 +71,6 @@ My research focuses on **bilevel optimization** and **multi-objective learning**
 **Assessing Food Security Indicators and Livelihoods of Rural Households in Malawi: A Data Analysis Report for the Catholic Relief Services Project**, supervised by Prof. David S. Matteson
 
 # 💻 Internships
+- *2026.05 - 08*, **Research Intern**, IBM Research, Thomas J. Watson Research Center, Yorktown Heights, NY. 
 - *2025.05 - 08*, **Research Intern**, IBM Research, Thomas J. Watson Research Center, Yorktown Heights, NY. Project: _Speech Understanding and Interaction for Granite Speech_. Mentor: Dr. Brian Kingsbury, Dr. Xiaodong Cui
 - *2022.06 - 08*, **Quantitative Analyst Intern**, Hudsun Technology, Shanghai, China.
