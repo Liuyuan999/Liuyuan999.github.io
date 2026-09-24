@@ -24,6 +24,7 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical and Computer E
 My research focuses on **bilevel optimization** and **multi-objective learning**, with applications spanning **financial pricing** models and **large language models (LLMs)**. I am particularly interested in developing efficient algorithms and theoretical insights that bridge the gap between optimization theory and real-world problems, enabling robust decision-making in complex, high-dimensional settings.
 
 # 📰 News
+- Sept 2026: Excited to share our paper ["**SURF**: Steering the Scalarization Weight to Uniformly Traverse the Pareto Front"](https://arxiv.org/pdf/2605.20619), has been accepted to **NeurIPS 2026**! Excited to present in Atlanta!
 - May 2026: I'm joining **IBM Research** for a summer internship at **Thomas J. Watson Research Center** in Yorktown Heights, NY. Looking forward to connecting with you!
 - Jan 2026: **ICASSP 2026** acceptance: excited to share our summer work at IBM on [BiRQ, a self-supervised speech recognition method](https://arxiv.org/pdf/2509.15430).
 - Nov 2025: A unified analysis on the Alternative Update Scheme of Penalty-Based Gradient Descent on Bilevel Optimization with general coupled constraints. Our paper is [Available](https://arxiv.org/pdf/2511.16796)!
