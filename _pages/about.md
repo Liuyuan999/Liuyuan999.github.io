@@ -45,6 +45,8 @@ My research focuses on **bilevel optimization** and **multi-objective learning**
 
 ### Publications
 
+**[NeurIPS 2026]** *Liuyuan Jiang*, Chentong Huang, Lisha Chen. *SURF: Steering the Scalarization Weight to Uniformly Traverse the Pareto Front*, arXiv preprint, 2026.
+
 **[JMLR Submission]** *Liuyuan Jiang*, Quan Xiao, Lisha Chen, Tianyi Chen. *Efficient Penalty-Based Bilevel Methods: Improved Analysis, Novel Updates, and Flatness Condition*, arXiv preprint, 2025.
 
 **[ICASSP 2026]** *Liuyuan Jiang*, Xiaodong Cui, Brian Kingsbury, Tianyi Chen, Lisha Chen. *BiRQ: Bi-Level Self-Labeling Random Quantization for Self-Supervised Speech Recognition*, IEEE International Conference on Acoustics, Speech, and Signal Processing, 2026.
