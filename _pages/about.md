@@ -23,6 +23,8 @@ I am Liuyuan Jiang, a PhD student in the Department of Electrical and Computer E
 
 My research focuses on **bilevel optimization** and **multi-objective learning**, with applications spanning **financial pricing** models and **large language models (LLMs)**. I am particularly interested in developing efficient algorithms and theoretical insights that bridge the gap between optimization theory and real-world problems, enabling robust decision-making in complex, high-dimensional settings.
 
+[Research projects and paper explanations](https://liuyuan999.github.io/liuyuan-research-site/)
+
 # 📰 News
 - Oct 2026: Honored to be selected as a **2026 IEEE Signal Processing Society (SPS) Scholarship recipient**! Grateful for the recognition and support from IEEE SPS.
 - Sept 2026: Excited to share our paper ["**SURF**: Steering the Scalarization Weight to Uniformly Traverse the Pareto Front"](https://arxiv.org/pdf/2605.20619), has been accepted to **NeurIPS 2026**! Excited to present in Atlanta!

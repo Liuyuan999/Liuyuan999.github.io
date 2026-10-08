@@ -6,6 +6,9 @@ main:
   - title: "News"
     url: "/#-news"
 
+  - title: "Research projects"
+    url: "https://liuyuan999.github.io/liuyuan-research-site/"
+
   - title: "Publications"
     url: "/#-publications"
 
