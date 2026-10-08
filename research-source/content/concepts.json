@@ -1,0 +1,36 @@
+[
+  {
+    "term": "Pareto front",
+    "url": "https://optima.cs.cityu.edu.hk/research/moo.html",
+    "title": "Pareto optimality and the Pareto front · Optima Group"
+  },
+  {
+    "term": "bilevel optimization",
+    "alternatives": [
+      "bilevel training",
+      "bilevel problem"
+    ],
+    "url": "https://optimization-online.org/2021/06/8450/",
+    "title": "A Gentle and Incomplete Introduction to Bilevel Optimization · Beck and Schmidt"
+  },
+  {
+    "term": "hypervolume",
+    "url": "https://pymoo.org/getting_started/part_4.html#hypervolume-hv",
+    "title": "Hypervolume · pymoo documentation"
+  },
+  {
+    "term": "coefficient of variation",
+    "url": "https://itl.nist.gov/div898/software/dataplot/refman2/auxillar/coefvari.htm",
+    "title": "Coefficient of variation · NIST"
+  },
+  {
+    "term": "word error rate",
+    "url": "https://huggingface.co/learn/audio-course/en/chapter5/evaluation#word-error-rate",
+    "title": "Word error rate · Hugging Face Audio Course"
+  },
+  {
+    "term": "direct preference optimization",
+    "url": "https://huggingface.co/docs/trl/dpo_trainer#looking-deeper-into-the-dpo-method",
+    "title": "Direct preference optimization · Hugging Face TRL"
+  }
+]

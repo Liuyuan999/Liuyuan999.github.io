@@ -1,0 +1,236 @@
+{
+  "verified_on": "2026-10-08",
+  "reference": "https://zhaoxian-wu.github.io/ffa-theory/",
+  "identity_source": "https://liuyuan999.github.io/",
+  "public_records": [
+    {
+      "slug": "surf",
+      "short": "SURF",
+      "title": "SURF: Steering the Scalarization Weight to Uniformly Traverse the Pareto Front",
+      "authors": [
+        "Liuyuan Jiang",
+        "Chentong Huang",
+        "Lisha Chen"
+      ],
+      "year": 2026,
+      "venue": "NeurIPS 2026",
+      "venue_note": "Acceptance reported on the author’s homepage.",
+      "topic": "Multi-objective learning",
+      "arxiv": "2605.20619",
+      "paper": "https://arxiv.org/abs/2605.20619",
+      "description": "Why evenly spaced preferences do not produce evenly spaced trade-offs, and how geometry helps.",
+      "question": "Can we choose weights that cover the Pareto front evenly?",
+      "type": "surf",
+      "code": "https://github.com/Liuyuan999/MOO_Uniform_PF",
+      "sources": [
+        {
+          "label": "Primary paper",
+          "url": "https://arxiv.org/abs/2605.20619"
+        },
+        {
+          "label": "Author code repository",
+          "url": "https://github.com/Liuyuan999/MOO_Uniform_PF"
+        },
+        {
+          "label": "Author publication and acceptance record",
+          "url": "https://liuyuan999.github.io/"
+        }
+      ]
+    },
+    {
+      "slug": "retailagent",
+      "short": "RetailAgent",
+      "title": "RetailAgent: Structured Adverse Timing in Self-Conditioned Multimodal LLM Trading Agents",
+      "authors": [
+        "Yupeng Zhang",
+        "Liuyuan Jiang",
+        "Hongyi Huang",
+        "Bingheng Li",
+        "Lisha Chen"
+      ],
+      "year": 2026,
+      "venue": "Preprint",
+      "topic": "LLM agents",
+      "arxiv": "2608.28399",
+      "paper": "https://arxiv.org/abs/2608.28399",
+      "description": "A controlled audit of when LLM trading agents choose exposure, and what those decisions reveal.",
+      "question": "What does a trading agent’s timing reveal about its policy?",
+      "type": "timing",
+      "sources": [
+        {
+          "label": "Primary paper",
+          "url": "https://arxiv.org/abs/2608.28399"
+        }
+      ]
+    },
+    {
+      "slug": "birq",
+      "short": "BiRQ",
+      "title": "BiRQ: Bi-Level Self-Labeling Random Quantization for Self-Supervised Speech Recognition",
+      "authors": [
+        "Liuyuan Jiang",
+        "Xiaodong Cui",
+        "Brian Kingsbury",
+        "Tianyi Chen",
+        "Lisha Chen"
+      ],
+      "year": 2026,
+      "venue": "ICASSP 2026",
+      "venue_note": "Acceptance reported on the author’s homepage. Preprint first released in 2025.",
+      "topic": "Speech representation learning",
+      "arxiv": "2509.15430",
+      "paper": "https://arxiv.org/abs/2509.15430",
+      "description": "Reuse a speech model’s own representations to improve its training targets, with raw-input anchors.",
+      "question": "Can a speech model help create its own learning targets?",
+      "type": "speech",
+      "sources": [
+        {
+          "label": "Primary paper",
+          "url": "https://arxiv.org/abs/2509.15430"
+        },
+        {
+          "label": "Author publication and acceptance record",
+          "url": "https://liuyuan999.github.io/"
+        }
+      ]
+    },
+    {
+      "slug": "efficient-penalty",
+      "short": "Efficient penalty methods",
+      "title": "Efficient Penalty-Based Bilevel Methods: Improved Analysis, Novel Updates, and Flatness Condition",
+      "authors": [
+        "Liuyuan Jiang",
+        "Quan Xiao",
+        "Lisha Chen",
+        "Tianyi Chen"
+      ],
+      "year": 2025,
+      "venue": "Preprint",
+      "topic": "Bilevel optimization",
+      "arxiv": "2511.16796",
+      "paper": "https://arxiv.org/abs/2511.16796",
+      "code": "https://github.com/Liuyuan999/PBGD_Free",
+      "description": "A broader analysis of alternating updates, flatness, and the cost of coupled constraints.",
+      "question": "Which parts of a penalty method actually need small steps?",
+      "type": "schedule",
+      "sources": [
+        {
+          "label": "Primary paper",
+          "url": "https://arxiv.org/abs/2511.16796"
+        },
+        {
+          "label": "Author code repository",
+          "url": "https://github.com/Liuyuan999/PBGD_Free"
+        }
+      ]
+    },
+    {
+      "slug": "pbgd-free",
+      "short": "PBGD-Free",
+      "title": "Beyond Value Functions: Single-Loop Bilevel Optimization under Flatness Conditions",
+      "authors": [
+        "Liuyuan Jiang",
+        "Quan Xiao",
+        "Lisha Chen",
+        "Tianyi Chen"
+      ],
+      "year": 2025,
+      "venue": "NeurIPS 2025",
+      "topic": "Bilevel optimization",
+      "arxiv": "2507.20400",
+      "paper": "https://arxiv.org/abs/2507.20400",
+      "code": "https://github.com/Liuyuan999/PBGD_Free",
+      "description": "Use upper-level flatness to remove the lower-level value-function loop in the analyzed setting.",
+      "question": "When can bilevel learning work without a nested solve?",
+      "type": "schedule",
+      "sources": [
+        {
+          "label": "Primary paper",
+          "url": "https://arxiv.org/abs/2507.20400"
+        },
+        {
+          "label": "Author code repository",
+          "url": "https://github.com/Liuyuan999/PBGD_Free"
+        },
+        {
+          "label": "Author publication and acceptance record",
+          "url": "https://liuyuan999.github.io/"
+        }
+      ]
+    },
+    {
+      "slug": "smoothness",
+      "short": "Rethinking smoothness",
+      "title": "Improved Analysis of Penalty-Based Methods for Bilevel Optimization with Coupled Constraints",
+      "authors": [
+        "Liuyuan Jiang",
+        "Quan Xiao",
+        "Tianyi Chen"
+      ],
+      "year": 2025,
+      "venue": "EUSIPCO 2025",
+      "topic": "Optimization theory",
+      "paper": "https://eurasip.org/Proceedings/Eusipco/Eusipco2025/pdfs/0001183.pdf",
+      "description": "Analyze curvature along the lower-level response to sharpen penalty-method iteration bounds.",
+      "question": "Can a sharper curvature analysis change the step-size rule?",
+      "type": "curvature",
+      "sources": [
+        {
+          "label": "Primary paper",
+          "url": "https://eurasip.org/Proceedings/Eusipco/Eusipco2025/pdfs/0001183.pdf"
+        },
+        {
+          "label": "Author publication and acceptance record",
+          "url": "https://liuyuan999.github.io/"
+        },
+        {
+          "label": "EUSIPCO 2025 proceedings session",
+          "url": "https://eurasip.org/Proceedings/Eusipco/Eusipco2025/HTML/session-index.html"
+        }
+      ]
+    },
+    {
+      "slug": "blocc",
+      "short": "BLOCC",
+      "title": "A Primal-Dual-Assisted Penalty Approach to Bilevel Optimization with Coupled Constraints",
+      "authors": [
+        "Liuyuan Jiang",
+        "Quan Xiao",
+        "Victor M. Tenorio",
+        "Fernando Real-Rojas",
+        "Antonio G. Marques",
+        "Tianyi Chen"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "topic": "Constrained bilevel optimization",
+      "arxiv": "2406.10148",
+      "paper": "https://arxiv.org/abs/2406.10148",
+      "code": "https://github.com/Liuyuan999/Penalty_Based_Lagrangian_Bilevel_Tianyi_Chen-s_Lab",
+      "description": "Optimize a leader’s decision when that decision also changes the follower’s feasible set.",
+      "question": "What happens when the leader changes the follower’s constraints?",
+      "type": "constraint",
+      "sources": [
+        {
+          "label": "Primary paper",
+          "url": "https://arxiv.org/abs/2406.10148"
+        },
+        {
+          "label": "Author code repository",
+          "url": "https://github.com/Liuyuan999/Penalty_Based_Lagrangian_Bilevel_Tianyi_Chen-s_Lab"
+        },
+        {
+          "label": "Author publication and acceptance record",
+          "url": "https://liuyuan999.github.io/"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Seven distinct publicly discoverable records. Public coverage is not a guarantee of completeness.",
+    "SURF and BiRQ venue acceptance verified against the author homepage.",
+    "Efficient Penalty-Based Bilevel Methods is related to Beyond Value Functions; do not count them as independent scientific contributions without qualification.",
+    "Private unpublished local drafts were excluded.",
+    "Videos are narration and storyboard drafts; no recorded video is claimed."
+  ]
+}

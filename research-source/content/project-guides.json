@@ -1,0 +1,1247 @@
+{
+  "surf": {
+    "scene": "Why uniform weights produce uneven coverage",
+    "story": [
+      [
+        "The coverage problem",
+        "Linear scalarization solves a weighted sum of competing objectives. Sweeping the weight produces a set of trade-offs, but evenly spaced weights need not produce evenly spaced objective vectors. A fixed computational budget can therefore yield dense clusters of similar solutions and leave other regions of the Pareto front sparsely represented."
+      ],
+      [
+        "The geometric cause",
+        "The scalarization optimum moves along the front at a speed that depends on the weight. Equal weight intervals represent unequal objective-space distances whenever that speed varies. The central question is how to allocate a finite set of scalarized solves so that their solutions cover the front uniformly."
+      ],
+      [
+        "Geometry-aware weight allocation",
+        "SURF measures coverage by arc length. Its normalized arc-length CDF maps a weight to the fraction of the front traversed. Equal quantiles of the inverse map give equally spaced solutions when the map is known. For general problems, SURF alternates finite, warm-started scalarized solves with monotone reconstruction of the map."
+      ]
+    ],
+    "findings": [
+      [
+        "Sampling rule",
+        "Equal arc-length quantiles",
+        "The inverse CDF maps equal distance targets to scalarization weights. Rule 1.",
+        "idea"
+      ],
+      [
+        "Reddit summarization",
+        "0.65 → 0.30",
+        "Spacing CV decreases for six trained adapters under the same per-slot PPO budget. Table 2 reports variability across evaluation batches.",
+        "evidence-panel-0"
+      ],
+      [
+        "Reddit summarization",
+        "3.76 → 4.03",
+        "Mean hypervolume increases in the same KL-regularized objective-space comparison. Table 2.",
+        "evidence-panel-0"
+      ]
+    ],
+    "figure": 1,
+    "figure_read": [
+      [
+        "Weight-to-front map",
+        "Each scalarization weight identifies an optimum and its objective vector. The CDF records the fraction of front arc length reached by that weight."
+      ],
+      [
+        "Analytical and estimated CDFs",
+        "Rule 1 uses a known CDF directly. Algorithm 1 implements Rule 2 by reconstructing the CDF from a finite set of solved points."
+      ],
+      [
+        "Refinement with finite inner solves",
+        "After the CDF update, each slot receives a revised weight and continues training from its preceding iterate. The inner solver and its optimization objective retain their scalarized form."
+      ]
+    ],
+    "panels": [
+      {
+        "label": "LLM alignment",
+        "title": "Reddit summarization: coverage of quality–faithfulness trade-offs",
+        "caption": "Table 2 · KL-regularized objectives · mean ± standard deviation",
+        "columns": [
+          "Method",
+          "Hypervolume ↑",
+          "Spacing CV ↓",
+          "Gap ratio ↓"
+        ],
+        "rows": [
+          [
+            "Uniform-w",
+            "3.76 ± 0.31",
+            "0.65 ± 0.12",
+            "5.89 ± 1.15"
+          ],
+          [
+            "SURF",
+            "4.03 ± 0.35",
+            "0.30 ± 0.17",
+            "2.93 ± 5.35"
+          ]
+        ],
+        "reading": "With the same per-slot PPO budget, SURF reduces the mean spacing coefficient of variation and gap ratio while increasing mean hypervolume. CV measures the standard deviation of neighboring objective-space distances relative to their mean. The gap ratio divides the largest distance by the smallest, making it sensitive to unusually short segments in the stochastic evaluation.",
+        "protocol": "Qwen2.5-0.5B-Instruct has a frozen backbone and trainable LoRA adapters. PPO optimizes summarization-quality and factual-faithfulness rewards with KL coefficient 0.05. N = 5 segments gives six model slots. After a shared 10-epoch w = 0.5 warm start, Uniform-w trains each slot for 12 PPO epochs. SURF starts from each slot’s epoch-5 checkpoint and performs seven one-epoch outer updates; endpoint policies are reused from Uniform-w. Both methods therefore have the same 12-epoch per-slot budget. Table 2 evaluates 10 batches of 64 prompts and reports mean ± standard deviation across these batches. The displayed entries use KL-regularized objectives; reward-only entries appear separately in the paper.",
+        "source": "S4.T2"
+      },
+      {
+        "label": "RL benchmark",
+        "title": "Fishwood: spacing gains at similar front-approximation quality",
+        "caption": "Table 1 · original reported scales · mean ± standard deviation",
+        "columns": [
+          "Method",
+          "HV (×10⁻¹) ↑",
+          "IGD (×10⁻²) ↓",
+          "CV (×10⁻¹) ↓",
+          "Gap ratio ↓"
+        ],
+        "rows": [
+          [
+            "Soup",
+            "2.39 ± 0",
+            "0.91 ± 0",
+            "2.00 ± 0",
+            "1.90 ± 0"
+          ],
+          [
+            "Uniform-w",
+            "2.40 ± 0",
+            "0.91 ± 0",
+            "1.94 ± 0",
+            "1.75 ± 0"
+          ],
+          [
+            "UMOD",
+            "2.39 ± 0.00",
+            "0.92 ± 0.00",
+            "2.33 ± 0.17",
+            "2.14 ± 0.14"
+          ],
+          [
+            "OLS",
+            "2.39 ± 0",
+            "0.96 ± 0",
+            "3.57 ± 0",
+            "2.49 ± 0"
+          ],
+          [
+            "SURF",
+            "2.39 ± 0",
+            "0.90 ± 0",
+            "0.26 ± 0",
+            "1.12 ± 0"
+          ]
+        ],
+        "reading": "Hypervolume and IGD remain similar across methods on Fishwood. SURF reduces the reported CV from 1.94 to 0.26 on the table’s ×10⁻¹ scale relative to Uniform-w, and lowers the gap ratio from 1.75 to 1.12. This comparison separates coverage uniformity from front-approximation quality.",
+        "protocol": "The Fishwood environment trades off fishing and wood-collection rewards. SURF uses N = 11 segments, 15 outer iterations, and damping 0.3. Optimization-based methods receive the same total number of inner iterations. Table 1 reports mean ± standard deviation over eight realizations; zero standard deviation denotes a deterministic experiment.",
+        "source": "S4.T1"
+      }
+    ],
+    "application": [
+      "A set of differently aligned summarization adapters",
+      "The LLM experiment trains six adapters representing different balances between summarization-quality and factual-faithfulness rewards. SURF reallocates the four intermediate weights while retaining the endpoint policies and the per-slot PPO budget. Its lower spacing CV corresponds to a more evenly distributed set of objective-space trade-offs."
+    ],
+    "cards": [
+      [
+        "Lemma 1",
+        "An invertible arc-length map",
+        "Under Assumptions 1–3, the Pareto-front traversal speed has finite positive lower and upper bounds. Consequently, s and Φ are strictly increasing, and Rule 1 can invert Φ to assign equal arc-length gaps.",
+        "S2"
+      ],
+      [
+        "Theorem 1",
+        "Linear convergence to the discretization floor",
+        "Under Assumptions 1–3, with sufficiently many segments, α ≤ 0.5, and the inner-solver budget of Remark 1, the combined CDF and hidden-space optimization error contracts by 1 − α/4 per outer iteration toward O(N⁻²). Equation 16 connects this estimate to spacing CV = O(N⁻¹).",
+        "S3"
+      ]
+    ],
+    "faq": [
+      [
+        "Which geometry defines uniform coverage?",
+        "Coverage is uniform in arc length under the chosen objective-space metric. Changing objective units or normalization changes the metric and the weights selected by the inverse CDF."
+      ],
+      [
+        "What is controlled in the quadratic example?",
+        "Appendix F.1 fixes the evaluation front while a gear parameter changes the scalarization-induced traversal speed. The interactive example uses the exact scalarized optimum and numerical integration of the arc-length map, so the curve stays fixed while the sampled weights change."
+      ]
+    ],
+    "source": "https://arxiv.org/html/2605.20619v1",
+    "result_note_title": "Objective scaling determines the coverage metric",
+    "example_title": "Weight spacing and Pareto-front spacing",
+    "method_title": "Arc-length reconstruction and weight refinement",
+    "technical_title": "Scalarization geometry and convergence of SURF",
+    "summary_points": [
+      {
+        "text": "Nonuniform traversal speed explains why uniform scalarization weights generally produce uneven Pareto-front coverage. Integrating that speed gives an arc-length CDF whose inverse specifies the sampling weights.",
+        "anchor": "idea",
+        "label": "Geometry"
+      },
+      {
+        "text": "SURF alternates warm-started scalarized optimization with monotone CDF reconstruction. It changes weight allocation while retaining the chosen inner solver.",
+        "anchor": "technical",
+        "label": "Algorithm 1"
+      },
+      {
+        "text": "For N front segments, Assumptions 1–3 and the stated parameter and inner-solver conditions give linear convergence of CDF and optimization error to an O(N⁻²) discretization floor. The resulting coefficient of variation (CV) of neighboring gaps is O(N⁻¹).",
+        "anchor": "technical",
+        "label": "Theorem 1"
+      },
+      {
+        "text": "For six Qwen2.5-0.5B summarization adapters with the same 12-epoch per-slot PPO budget, spacing CV falls from 0.65 ± 0.12 to 0.30 ± 0.17, while hypervolume rises from 3.76 ± 0.31 to 4.03 ± 0.35.",
+        "anchor": "evidence-panel-0",
+        "label": "Table 2"
+      }
+    ]
+  },
+  "retailagent": {
+    "scene": "What does aggregate return conceal about an agent’s decisions?",
+    "story": [
+      [
+        "Exposure and timing are distinct",
+        "An agent can earn positive action-weighted return by remaining invested during a rising stock-day. That outcome still leaves open whether its chosen holding intervals were relatively favorable. RetailAgent compares the schedule with constant exposure on the same realized path."
+      ],
+      [
+        "Sequential decisions under controlled inputs",
+        "The framework records anonymized price observations, permitted state, actions, optional self-authored memories, and subsequently revealed returns. The principal numerical-text protocol supplies completed-interval history. Representation and state conditions examine how the policy changes when its input or carried state changes."
+      ],
+      [
+        "The empirical question",
+        "The study tests whether negative timing recurs across configurations and whether that pattern depends on the ordering of actions. It then varies visible self-authored memory to examine the relationship between persistence and conditional timing."
+      ]
+    ],
+    "findings": [
+      [
+        "Mean timing",
+        "−45.7 bps",
+        "The principal 10-minute Qwen3.5-9B text condition has negative timing among scored stock-days containing both actions. Table 1.",
+        "evidence-panel-0"
+      ],
+      [
+        "Action-order control",
+        "−45.7 → −8.7 bps",
+        "Same-day shuffling preserves daily action counts while attenuating the intact trajectory’s negative timing. Table 1.",
+        "evidence-panel-0"
+      ],
+      [
+        "Self-authored memory",
+        "2.5 → 1.7 switches",
+        "The later-period consistency panel records fewer position changes when one earlier note is visible, compared with the current note alone. Table 3.",
+        "evidence-panel-1"
+      ]
+    ],
+    "figure": 0,
+    "figure_read": [
+      [
+        "Observation pathways",
+        "Figure 2 routes numerical text and visual observations through the frozen Qwen3.5-9B model. Joint prompts contain both input representations."
+      ],
+      [
+        "Recursive policy state",
+        "Position, ledger, account summaries, and self-authored notes depend on earlier decisions. The dashed memory route carries the agent’s own language into later prompts."
+      ],
+      [
+        "Learned continuous state",
+        "The optional branch maps seven price features through a VICReg-pretrained GRU and rank-64 adapter into two soft tokens on a 92-word embedding basis. Its optimization stage is separate from the inference-only standard and narrative conditions."
+      ]
+    ],
+    "panels": [
+      {
+        "label": "Shuffle controls",
+        "title": "Intact actions and exposure-preserving shuffles",
+        "caption": "Table 1 · Qwen3.5-9B numerical text · 10-minute intervals",
+        "columns": [
+          "Condition",
+          "Stock-days",
+          "Timing (bps)",
+          "95% interval"
+        ],
+        "rows": [
+          [
+            "Intact schedule",
+            "13,710",
+            "−45.7",
+            "[−49.4, −41.8]"
+          ],
+          [
+            "Global shuffle",
+            "13,716",
+            "−3.5",
+            "[−5.4, −1.7]"
+          ],
+          [
+            "Same-day shuffle",
+            "13,716",
+            "−8.7",
+            "[−10.4, −7.1]"
+          ]
+        ],
+        "reading": "The intact schedule’s timing is −45.7 bps per stock-day. Same-day shuffling gives −8.7 bps after preserving daily action counts and disrupting interval alignment. These saved-action controls show that the temporal arrangement of the actions carries much of the negative timing.",
+        "protocol": "Outcomes are subsequent non-overlapping research-return labels on historical equity paths. Means are conditional on scored stock-days containing both actions. The 95% percentile intervals use 3,000 trading-date bootstrap draws. The saved shuffle archive reports 13,716 stock-days, compared with 13,710 in the intact row.",
+        "source": "S3.T1"
+      },
+      {
+        "label": "Memory conditions",
+        "title": "Memory visibility under the consistency directive",
+        "caption": "Table 3 · main-period conditional timing · 10-minute intervals",
+        "columns": [
+          "Visible earlier memories",
+          "Scored N",
+          "Timing (bps)",
+          "95% interval"
+        ],
+        "rows": [
+          [
+            "0 (current memory only)",
+            "1,194",
+            "−62.8",
+            "[−69.7, −56.0]"
+          ],
+          [
+            "1",
+            "1,054",
+            "−74.1",
+            "[−81.5, −66.6]"
+          ],
+          [
+            "5",
+            "1,154",
+            "−66.7",
+            "[−73.9, −59.7]"
+          ],
+          [
+            "12",
+            "1,184",
+            "−67.1",
+            "[−75.0, −59.6]"
+          ]
+        ],
+        "reading": "One earlier note gives the most negative main-period estimate of these four conditions, −74.1 bps per scored stock-day. In the separate later-period panel, this condition has 1.7 position changes per stock-day, compared with 2.5 for the current note alone. Longer windows change timing non-monotonically.",
+        "protocol": "Each main-period arm attempts 1,500 stock-days across 150 dates. Narrative scoring removes failed intervals, requires at least five valid decisions, and retains stock-days containing both actions. The 95% date-clustered intervals use 2,000 bootstrap draws. Switch counts come from the later-period panel, which extends the evaluated dates and was included in the broader sample used to select the consistency directive.",
+        "source": "S3.T3"
+      }
+    ],
+    "application": [
+      "Interval allocation on a fixed path",
+      "The synthetic schedule uses the paper’s timing definition to separate average exposure from interval allocation. In the archived memory-conditioned example in Table 6, positive long-interval return of +359.4 bps coexists with timing of −867.3 bps because the flat intervals capture +1,404.0 bps of the same stock-day’s movement."
+    ],
+    "cards": [
+      [
+        "Equation 2",
+        "An exact decomposition on each stock-day",
+        "Action-weighted return equals mean exposure times the sum of interval returns, plus centered timing. Always-long and always-flat schedules have zero timing. Exchanging every long and flat action negates the timing score.",
+        "S2.SS1"
+      ],
+      [
+        "Appendix A.5",
+        "The population measured by timing",
+        "Standard and narrative timing means condition on stock-days containing both actions. Confidence intervals resample trading dates. Cross-configuration magnitude comparisons use the recorded condition-specific sampling frames.",
+        "A1.SS5"
+      ]
+    ],
+    "faq": [
+      [
+        "Which trajectories contribute to the reported mean?",
+        "Standard and narrative scorers retain stock-days containing both actions. For narrative conditions, failed intervals are removed and at least five valid decisions are required. Table A1 records the flow from 1,500 attempted stock-days to each scored sample."
+      ],
+      [
+        "What is counted by the memory window?",
+        "The two-pass protocol generates a current-step note before the decision. The window w counts earlier notes. Thus w = 0 uses the current note alone and w = 1 adds one earlier note."
+      ]
+    ],
+    "source": "https://arxiv.org/html/2608.28399v1",
+    "result_note_title": "Scored trajectories and date-resampled uncertainty",
+    "example_title": "Exposure and interval choice on the same return path",
+    "summary_points": [
+      {
+        "text": "Exposure-matched timing separates the return of constant exposure from the agent’s allocation of that exposure across intervals on the same stock-day.",
+        "anchor": "technical",
+        "label": "Equations 1–2"
+      },
+      {
+        "text": "All 14 standard configurations report negative mean timing among stock-days containing both actions. The configurations vary input modality, decision interval, account state, and model family.",
+        "anchor": "evidence-panel-0",
+        "label": "Table 1"
+      },
+      {
+        "text": "The principal 10-minute text condition scores −45.7 bps per stock-day. Same-day shuffling attenuates the estimate to −8.7 bps while preserving each day’s number of long actions.",
+        "anchor": "evidence-panel-0",
+        "label": "Table 1"
+      },
+      {
+        "text": "With a consistency directive, one earlier self-authored note is associated with more negative main-period timing and fewer position changes in the separate later-period panel.",
+        "anchor": "evidence-panel-1",
+        "label": "Table 3"
+      }
+    ],
+    "method_title": "Observations, recursive state, and self-conditioning",
+    "technical_title": "Exposure-matched timing and evaluation population"
+  },
+  "birq": {
+    "scene": "Target refinement within a shared speech encoder",
+    "story": [
+      [
+        "From fixed labels to learned representations",
+        "BEST-RQ turns unmasked audio features into pseudo-labels using a fixed random projection and codebook, then trains an encoder to predict those labels from masked audio. The targets remain unchanged as the encoder learns. HuBERT-style relabeling uses learned features to refine targets through separate labeling stages."
+      ],
+      [
+        "A target generator inside the prediction model",
+        "BiRQ reuses the first part of the acoustic encoder to generate targets from unmasked speech. Normalized intermediate features pass through a fixed random projection and a Gumbel-softmax quantizer. The resulting enhanced targets depend differentiably on the same encoder parameters used for masked prediction."
+      ],
+      [
+        "An anchoring task for joint learning",
+        "The raw-input targets are retained as a reference task independent of the encoder parameters. BiRQ minimizes the enhanced-target loss while requiring the anchoring loss to stay near its minimum. The penalty implementation brings both tasks into one training loop, with gradients through target construction as well as prediction."
+      ]
+    ],
+    "findings": [
+      [
+        "Target construction",
+        "Shared encoder",
+        "The enhanced labels depend on intermediate encoder features. Fixed raw-input labels retain a reference masked-prediction task.",
+        "idea"
+      ],
+      [
+        "LibriSpeech · 155M",
+        "19.6% → 12.6%",
+        "test-other WER with matched 100-epoch pretraining on 960h unlabeled speech and fine-tuning on 100h labeled speech. Table 2.",
+        "evidence-panel-0"
+      ],
+      [
+        "AMI · 275M",
+        "37.2% → 34.0%",
+        "Single-distant-microphone WER after 5k-hour YODAS pretraining and 150h AMI fine-tuning. Table 3.",
+        "evidence-panel-1"
+      ]
+    ],
+    "figure": 0,
+    "figure_read": [
+      [
+        "Two inputs, one encoder",
+        "The unmasked input supplies the raw-input and intermediate-feature targets. The masked input passes through the full encoder for prediction. Cross-entropy is evaluated at the masked positions."
+      ],
+      [
+        "Fixed and representation-dependent targets",
+        "The raw-input branch generates fixed anchoring labels. The intermediate-feature branch uses the first part of the encoder, a fixed random projection and a Gumbel-softmax quantizer to generate enhanced targets."
+      ],
+      [
+        "Shared parameters and gradient paths",
+        "Enhanced-target construction and masked prediction share encoder parameters. The enhanced-loss gradient includes both paths, while the anchor targets remain independent of the encoder."
+      ]
+    ],
+    "panels": [
+      {
+        "label": "LibriSpeech",
+        "title": "LibriSpeech with a 155M Conformer",
+        "caption": "Table 2 · C2 · word error rate (%) ↓",
+        "columns": [
+          "Method",
+          "test-clean",
+          "test-other"
+        ],
+        "rows": [
+          [
+            "Supervised baseline",
+            "7.4",
+            "20.5"
+          ],
+          [
+            "BEST-RQ",
+            "6.8",
+            "19.6"
+          ],
+          [
+            "BiRQ",
+            "5.0",
+            "12.6"
+          ]
+        ],
+        "reading": "BiRQ reduces test-clean WER by 1.8 percentage points and test-other WER by 7.0 percentage points. The latter corresponds to a 35.7% relative reduction from the reported BEST-RQ value. Both methods use the same C2 encoder and 100-epoch pretraining budget.",
+        "protocol": "C2 is a 10-layer, 155M-parameter Conformer with full attention. BEST-RQ and BiRQ are pretrained for 100 epochs on 960h LibriSpeech. BiRQ uses layer 7 to generate enhanced targets. Pretraining uses AdamW, batch size 64 and learning rate 1×10⁻⁴. Fine-tuning uses CTC on 100h labeled LibriSpeech for a 30-epoch warmup, hold and annealing schedule. Decoding uses the LibriSpeech 4-gram language model. Table 2 reports point estimates.",
+        "source": "S4.T2"
+      },
+      {
+        "label": "AMI / YODAS",
+        "title": "YODAS pretraining and AMI meeting recognition",
+        "caption": "Table 3 · C3 · word error rate (%) ↓",
+        "columns": [
+          "Method",
+          "AMI IHM",
+          "AMI SDM"
+        ],
+        "rows": [
+          [
+            "Supervised baseline",
+            "25.7",
+            "47.0"
+          ],
+          [
+            "BEST-RQ",
+            "18.4",
+            "37.2"
+          ],
+          [
+            "BiRQ",
+            "16.3",
+            "34.0"
+          ]
+        ],
+        "reading": "BiRQ reduces WER in both microphone conditions: by 2.1 percentage points for individual headset microphones and 3.2 percentage points for the single distant microphone. This comparison uses the same C3 encoder and pretraining corpus for both methods.",
+        "protocol": "C3 is a 10-layer, 275M-parameter Conformer with an attention window of 200. BEST-RQ and BiRQ are pretrained for 100 epochs on 5k hours of YODAS. BiRQ uses layer 7 to generate enhanced targets. Pretraining uses AdamW, batch size 128 and learning rate 1×10⁻⁴. Fine-tuning uses CTC on 150h labeled AMI with the same 30-epoch schedule as LibriSpeech. Decoding uses an in-house interpolated 4-gram language model. IHM denotes individual headset microphones and SDM denotes a single distant microphone. Table 3 reports point estimates.",
+        "source": "S4.T3"
+      }
+    ],
+    "application": [
+      "Self-supervised pretraining for recognition",
+      "The encoder predicts pseudo-labels from unlabeled audio during pretraining. It is then fine-tuned with transcripts using CTC and evaluated by word error rate. The LibriSpeech and AMI experiments measure whether joint target refinement improves this downstream recognition task."
+    ],
+    "cards": [
+      [
+        "Equation 8",
+        "Enhanced-target learning constrained by the anchor task",
+        "The objective minimizes enhanced-label cross-entropy over encoder parameters whose anchoring loss lies within a prescribed gap of its minimum. Both losses use the shared encoder and masked-frame prediction task.",
+        "S3.SS2"
+      ],
+      [
+        "Lemma 1",
+        "A conditional link between penalty and constrained objectives",
+        "With bounded enhanced-loss subgradients on exact anchor minimizers and a Hölderian error bound for the anchor-loss gap, a sufficiently large loss-weight ratio transfers approximate optimality from the penalty problem to the anchor-constrained problem.",
+        "S3.SS3"
+      ]
+    ],
+    "faq": [
+      [
+        "How is the target-generating layer chosen?",
+        "The paper uses a pilot heuristic near 70% of encoder depth and selects layer 7 for the 10-layer experiments. The 5-layer ablation in Table 1 compares layers 2, 3 and 4. At 100 epochs, layer 4 yields the lowest WER among those three choices."
+      ],
+      [
+        "How does online refinement compare with staged relabeling?",
+        "Table 1 includes a 137M Conformer comparison with offline iterative relabeling, where each retraining stage uses targets from a previously trained model. The first 100-epoch relabeling stage yields 18.6% test-other WER, compared with 19.1% for the 100-epoch layer-3 BiRQ setting. BiRQ reaches 17.2% after 300 epochs. Interpreting these rows requires accounting for the preceding label-encoder training as well as the current training stage."
+      ]
+    ],
+    "source": "https://arxiv.org/html/2509.15430v1",
+    "result_note_title": "Evaluation protocol",
+    "example_title": "Information paths for the two target sources",
+    "method_title": "Joint target generation and masked prediction",
+    "technical_title": "The anchor-constrained objective and its penalty implementation",
+    "summary_points": [
+      {
+        "text": "Intermediate encoder features generate enhanced pseudo-labels, while fixed raw-input labels define an anchoring task. Gumbel-softmax allows gradients to pass through enhanced-target construction.",
+        "anchor": "idea",
+        "label": "Figure 1"
+      },
+      {
+        "text": "The penalty implementation updates one shared encoder using both loss gradients. The minimum anchoring loss is constant with respect to the parameters, so no auxiliary lower-level solve is required.",
+        "anchor": "technical",
+        "label": "Equation 9 · Algorithm 1"
+      },
+      {
+        "text": "For the 155M Conformer with matched 100-epoch LibriSpeech pretraining, test-clean/test-other WER decreases from 6.8%/19.6% with BEST-RQ to 5.0%/12.6% with BiRQ.",
+        "anchor": "evidence-panel-0",
+        "label": "Table 2"
+      },
+      {
+        "text": "For the 275M Conformer pretrained on YODAS, AMI headset/distant-microphone WER decreases from 18.4%/37.2% with BEST-RQ to 16.3%/34.0% with BiRQ.",
+        "anchor": "evidence-panel-1",
+        "label": "Table 3"
+      }
+    ]
+  },
+  "efficient-penalty": {
+    "scene": "Which curvature governs an alternating penalty method?",
+    "story": [
+      [
+        "A penalty changes the joint update",
+        "A bilevel problem selects an upper variable while the lower variable minimizes its own objective. A value-function penalty makes lower-level suboptimality costly. Its joint curvature grows with the penalty, so a joint gradient step requires a smaller step size as the penalty increases."
+      ],
+      [
+        "Lower-level minimization changes the outer geometry",
+        "An alternating method first computes a perturbed lower-level response. The objective followed by the outer update becomes a scaled difference of two nearby value functions. Their curvature terms cancel under the paper’s regularity conditions, giving a smoothness bound independent of the penalty. The analysis applies to a fixed lower feasible set and extends to a feasible set that depends on the upper variable."
+      ],
+      [
+        "One response can be removed under flatness",
+        "Forming the full reduced gradient still requires the original and perturbed responses. PBGD-Free keeps the perturbed response and replaces the full gradient by the upper partial gradient. The paper’s flatness condition controls the resulting omission bias. The fixed-set algorithm is fully single-loop. With coupled constraints, it retains a constrained inner solve and uses a multiplier-based surrogate for the convergence analysis."
+      ]
+    ],
+    "findings": [
+      [
+        "Reduced smoothness",
+        "O(1) in the penalty",
+        "Theorems 3.1 and 5.1 bound the curvature of the reduced objective independently of the penalty in their respective constraint regimes.",
+        "technical"
+      ],
+      [
+        "Flatness-controlled omission",
+        "One original response removed",
+        "PBGD-Free replaces the full reduced gradient by an upper partial gradient and bounds the resulting stationarity residual through flatness.",
+        "technical"
+      ],
+      [
+        "Diabetes SVM",
+        "0.17 s vs 2.64 s",
+        "Mean runtime for PBGD-Free and PBGD-BLOCC, with mean test accuracy 76.99% and 77.58%, respectively. Table 7.",
+        "evidence-panel-1"
+      ]
+    ],
+    "figure": 0,
+    "figure_read": [
+      [
+        "Joint upper partial gradients",
+        "The spheres show the upper partial gradient of the joint objective for different penalties. They depend on the current lower variable, which need not be an optimized response."
+      ],
+      [
+        "Reduced gradients",
+        "The lines show the gradient after lower-level minimization. Their dependence on the penalty is much smaller in Example 3."
+      ],
+      [
+        "The quantity analyzed",
+        "The reduced-smoothness theorems bound variation of the reduced gradient under their regularity assumptions. Figure 3 illustrates that geometry on one problem."
+      ]
+    ],
+    "panels": [
+      {
+        "label": "Algorithm map",
+        "title": "Response computations in the analyzed methods",
+        "caption": "Algorithms 2–4 · fixed-set and coupled-constraint regimes",
+        "columns": [
+          "Method / regime",
+          "Inner work",
+          "Outer direction / condition"
+        ],
+        "rows": [
+          [
+            "ALT-PBGD / fixed set",
+            "Original + perturbed response",
+            "Full reduced-penalty gradient"
+          ],
+          [
+            "PBGD-Free / fixed set",
+            "One tracking update",
+            "Upper partial gradient; flatness"
+          ],
+          [
+            "PBGD-BLOCC / coupled",
+            "Two primal-dual response solves",
+            "Multiplier-aware penalty gradient"
+          ],
+          [
+            "PBGD-Free / coupled",
+            "Perturbed constrained inner solve",
+            "Flatness; surrogate analyzed in Theorem 5.2"
+          ]
+        ],
+        "reading": "ALT-PBGD and PBGD-BLOCC form the full reduced-penalty gradient from two responses. PBGD-Free removes the original response computation. Its fixed-set theorem analyzes one perturbed-response tracking update per outer iteration. The coupled theorem keeps a constrained solve and measures stationarity for the multiplier-based surrogate.",
+        "protocol": "Proposition 1 gives O(ε⁻¹) outer iterations for ALT-PBGD versus O(ε⁻¹·⁵) for JNT-PBGD under the fixed-set assumptions and the prescribed inner accuracy. Remark 6 includes the logarithmic cost of projected-gradient response solves. Proposition 3 gives O(ε⁻¹) outer iterations for PBGD-BLOCC under Theorem 5.1. Remark 10 distinguishes general constrained inner-solver cost from the affine-in-the-lower-variable case. Theorems 4.1 and 5.2 add trajectory-wise flatness and bound averaged squared generalized-gradient stationarity with a residual.",
+        "source": "S3.SS3"
+      },
+      {
+        "label": "Constrained SVM",
+        "title": "Diabetes SVM: test accuracy and training time",
+        "caption": "Table 7 · diabetes · mean ± standard deviation",
+        "columns": [
+          "Method",
+          "Test accuracy ↑",
+          "Runtime (s) ↓"
+        ],
+        "rows": [
+          [
+            "LV-HBA",
+            "0.7593 ± 0.0397",
+            "2.47 ± 0.23"
+          ],
+          [
+            "GAM",
+            "0.7182 ± 0.0360",
+            "4.48 ± 0.22"
+          ],
+          [
+            "BiC-GAFFA",
+            "0.7568 ± 0.0366",
+            "0.31 ± 0.01"
+          ],
+          [
+            "PBGD-BLOCC",
+            "0.7758 ± 0.0292",
+            "2.64 ± 0.59"
+          ],
+          [
+            "PBGD-Free",
+            "0.7699 ± 0.0313",
+            "0.17 ± 0.09"
+          ]
+        ],
+        "reading": "PBGD-Free has the lowest reported mean runtime, 0.17 seconds, and PBGD-BLOCC has the highest reported mean test accuracy, 0.7758. PBGD-Free’s mean accuracy is 0.7699. The table reports standard deviations across the random splits.",
+        "protocol": "The paper uses 20 random train–validation–test splits on the diabetes dataset. The upper variable sets margin-violation bounds and the lower problem trains a linear SVM. Runtime ends when the validation-loss change is below 10⁻⁵ or at 50 epochs. PBGD-Free uses penalty 20 and the coupled algorithm’s retained perturbed-response solve. Values are mean ± standard deviation.",
+        "source": "S6.SS3"
+      }
+    ],
+    "application": [
+      "Backbone adaptation and SVM hyperparameters",
+      "The LLM application assigns supervised fine-tuning to an output head and preference learning to LoRA backbone weights. After bilevel training, a new supervised head is fitted while the learned backbone stays fixed. The SVM application instead tunes per-example margin-violation bounds, which change the feasible set for the lower-level classifier. These tasks exercise the fixed-set and coupled-constraint update schedules."
+    ],
+    "cards": [
+      [
+        "Theorems 3.1 and 5.1",
+        "A penalty-independent smoothness bound",
+        "The joint penalty objective has smoothness order O(γ), while the reduced objective Fγ(x) has order O(1). The fixed-set result uses lower-level strong convexity and objective regularity. The coupled result also uses bounded multipliers, strict complementarity, LICQ, and boundary regularity. Propositions 1 and 3 use this bound to obtain O(ε⁻¹) outer iterations for squared generalized-gradient stationarity.",
+        "S3.Thmtheorem1"
+      ],
+      [
+        "Theorems 4.1 and 5.2",
+        "Flatness determines the stationarity residual",
+        "The average squared generalized-gradient norm is bounded by O(T⁻¹ + δ^{2(α−1)/α}) under the theorem-specific step sizes and penalty choice. Theorem 4.1 measures this quantity for Fγ(x) and analyzes a fully single-loop fixed-set update with 1 < α ≤ 1.5. Theorem 5.2 measures it for Fγ^λ(x), uses 1 < α < 1.5, and retains the constrained inner solve.",
+        "S5.Thmtheorem2"
+      ]
+    ],
+    "faq": [
+      [
+        "How do the preprint and conference papers differ?",
+        "The NeurIPS 2025 paper develops PBGD-Free under flatness. The EUSIPCO 2025 paper develops the reduced-smoothness analysis for constrained bilevel problems. This preprint brings those mechanisms together and analyzes the fixed-set single-loop algorithm and the coupled-constraint extension."
+      ],
+      [
+        "Why is a nearby perturbed response insufficient by itself?",
+        "The original and perturbed responses can be close while the penalty-scaled gradient difference stays of order one. Example 1 constructs opposing full and simplified directions. Flatness supplies the additional structure needed to bound the omission bias."
+      ],
+      [
+        "What does the stationarity residual measure?",
+        "The residual is part of an averaged squared generalized-gradient bound. It depends on the trajectory-average flatness residual and its exponent. The fixed-set and coupled theorems apply that criterion to different penalized objectives."
+      ]
+    ],
+    "source": "https://arxiv.org/html/2511.16796v1",
+    "result_note_title": "Outer iterations and lower-level solver work",
+    "example_title": "Fixed and coupled lower-level constraints",
+    "summary_points": [
+      {
+        "text": "After lower-level minimization, the penalty objective has a smoothness bound independent of the penalty under the fixed-set and coupled regularity conditions. This permits constant-order outer step sizes.",
+        "anchor": "technical",
+        "label": "Theorems 3.1 and 5.1"
+      },
+      {
+        "text": "ALT-PBGD reaches the squared generalized-gradient target in O(ε⁻¹) outer iterations, compared with O(ε⁻¹·⁵) for the joint update. Each alternating step still computes two lower-level responses.",
+        "anchor": "evidence-panel-0",
+        "label": "Proposition 1"
+      },
+      {
+        "text": "Flatness controls the bias from removing the original response. PBGD-Free uses one tracking update with fixed constraints and retains a constrained inner solve with coupled constraints. Its stationarity bounds include a flatness-dependent residual.",
+        "anchor": "technical",
+        "label": "Theorems 4.1 and 5.2"
+      },
+      {
+        "text": "On the diabetes SVM benchmark, mean runtime is 0.17 seconds for PBGD-Free and 2.64 seconds for PBGD-BLOCC. Their mean test accuracies are 76.99% and 77.58%, respectively, across 20 random splits.",
+        "anchor": "evidence-panel-1",
+        "label": "Table 7"
+      }
+    ],
+    "method_title": "Alternating gradients and value-function-free updates",
+    "technical_title": "Reduced smoothness and generalized-gradient stationarity"
+  },
+  "pbgd-free": {
+    "scene": "Two lower-level responses in the penalty gradient",
+    "story": [
+      [
+        "The original and perturbed lower problems",
+        "The paper studies an upper loss f evaluated at a minimizer of the lower loss g. Its penalty formulation adds the lower objective gap to f. The original response y_g^*(x) minimizes g, while the perturbed response y_γ^*(x) minimizes the joint penalty objective."
+      ],
+      [
+        "The cost of the value-function correction",
+        "Equation 5 differentiates the reduced penalty objective using both responses. Standard penalty updates therefore estimate two lower solutions before forming the outer direction. PBGD-Free removes the original-response estimate and retains the perturbed-response update."
+      ],
+      [
+        "Flatness controls the approximation error",
+        "The removed correction is multiplied by γ, so its bias need not vanish as the penalty grows. The paper introduces a function-value flatness condition around an original lower minimizer, derives a sharper response-distance bound, and uses that bound to analyze the simplified updates."
+      ]
+    ],
+    "findings": [
+      [
+        "Update cost",
+        "One lower iterate",
+        "For K = 1, each iteration has one lower tracking step and one upper update. Table 1 compares d_x + d_y iterate storage with d_x + 2d_y for V-PBGD.",
+        "idea"
+      ],
+      [
+        "Convergence criterion",
+        "Penalty-gradient stationarity",
+        "Theorem 3 bounds average squared gradient norm by an O(T⁻¹) term plus a residual controlled by the trajectory flatness parameter.",
+        "technical"
+      ],
+      [
+        "LLM fine-tuning",
+        "0.7837 preference loss",
+        "PBGD-Free gives evaluated DPO loss 0.7837 and SFT loss 0.8516, versus 0.8055 and 0.8656 for ALRIGHT under the fixed-time comparison. Table 2.",
+        "evidence-panel-0"
+      ]
+    ],
+    "figure": 0,
+    "figure_read": [
+      [
+        "Two response estimates",
+        "V-PBGD and F2SA use the original lower problem and the perturbed lower problem to assemble the penalty-gradient correction."
+      ],
+      [
+        "One retained response",
+        "PBGD-Free retains the perturbed lower iterate and updates the upper variable with ∇xf. The fully single-loop version takes one tracking step per iteration."
+      ],
+      [
+        "Controlled omission bias",
+        "The update diagram identifies the computation removed by the method. Definition 1 and Theorem 3 supply the conditions and error bound for that omission."
+      ]
+    ],
+    "panels": [
+      {
+        "label": "Trained outcome",
+        "title": "Preference and supervised losses at the trained outcome",
+        "caption": "Table 2 · outcome (xT, yT) · losses ↓",
+        "columns": [
+          "Method",
+          "Evaluated DPO",
+          "Evaluated SFT"
+        ],
+        "rows": [
+          [
+            "V-PBGD",
+            "0.8180",
+            "1.0309"
+          ],
+          [
+            "BOME",
+            "0.8332",
+            "1.1552"
+          ],
+          [
+            "ALRIGHT",
+            "0.8055",
+            "0.8656"
+          ],
+          [
+            "PBGD-Free",
+            "0.7837",
+            "0.8516"
+          ]
+        ],
+        "reading": "PBGD-Free gives evaluated DPO loss 0.7837 and evaluated SFT loss 0.8516, the lowest values in these columns. ALRIGHT gives 0.8055 and 0.8656. The comparison evaluates the two losses under the same training-time budget, with ALRIGHT using a bi-objective formulation.",
+        "protocol": "LoRA adaptation of the model labeled Llama-3-3b in the paper. DPO uses Dahoas/rm-hh-rlhf and SFT uses OpenOrca, with 4,800 samples per dataset and batch size 32. Appendix C.3 specifies LoRA rank 16 and alpha 16, Adam with learning rate 10⁻⁵, and NVIDIA A100 GPUs with 40 GB memory. Methods share a fixed training-time budget and complete different numbers of updates. Table 2 reports point estimates.",
+        "source": "S4.T2"
+      },
+      {
+        "label": "After head adaptation",
+        "title": "Head adaptation with the learned backbone fixed",
+        "caption": "Table 2 · post-SFT outcome (xT, ỹ) · losses ↓",
+        "columns": [
+          "Method",
+          "Evaluated DPO",
+          "Training SFT"
+        ],
+        "rows": [
+          [
+            "V-PBGD",
+            "0.8423",
+            "0.9533"
+          ],
+          [
+            "BOME",
+            "0.8402",
+            "0.9842"
+          ],
+          [
+            "ALRIGHT",
+            "0.8201",
+            "0.7855"
+          ],
+          [
+            "PBGD-Free",
+            "0.8088",
+            "0.6688"
+          ]
+        ],
+        "reading": "After head adaptation, PBGD-Free gives evaluated DPO loss 0.8088 and training SFT loss 0.6688, compared with 0.8201 and 0.7855 for ALRIGHT. The SFT measure in this phase is a training loss. Its DPO measure evaluates preference loss with the adapted head.",
+        "protocol": "Phase S2 freezes the learned backbone and adapts the head on another SFT dataset under a fixed-time budget. Table 2 reports the resulting evaluated DPO and training SFT losses as point estimates. The paper separately assesses generated output with BLEU and preference alignment with reward-gap and win-rate measurements.",
+        "source": "S4.T2"
+      }
+    ],
+    "application": [
+      "Preference learning and head adaptation",
+      "In the application, x contains LoRA weights in the attention backbone and y is the output head. The upper loss is direct preference optimization (DPO), and the lower loss is supervised fine-tuning (SFT). A second evaluation phase freezes the learned backbone and adapts the head on another SFT dataset, measuring supervised adaptation together with the retained preference loss."
+    ],
+    "cards": [
+      [
+        "Proposition 2",
+        "A persistent bias under Lipschitz regularity",
+        "Proposition 2 constructs a bilevel problem satisfying Assumptions 1 and 2 where PBGD-Free retains a non-vanishing stationarity residual. The correction contains information about the dependence of the lower solution on x.",
+        "S2.SS2"
+      ],
+      [
+        "Theorem 3",
+        "Single-loop convergence under flatness",
+        "Under Assumption 2, a common exponent 1 < α ≤ 1.5, bounded modulus, the trajectory-average flatness bound, and the stated penalty and step sizes, K = 1 gives the displayed bound on average squared penalty-gradient norm. Each iteration has constant first-order work. When the residual meets the target tolerance, the decaying term reaches that tolerance in O(ε⁻¹) iterations.",
+        "S3.SS3"
+      ]
+    ],
+    "faq": [
+      [
+        "What does the flatness condition measure?",
+        "Definition 1 bounds upper-loss variation relative to an original lower minimizer for all y. The modulus c and exponent α control its distance dependence, while δ permits a residual variation. This is a condition on function values, and its parameters enter the stationarity bound."
+      ],
+      [
+        "Which stationary objective does the theorem use?",
+        "Theorem 3 uses the average squared gradient norm of the reduced penalty objective Fγ. Lemma 3 separately transfers a sufficiently accurate penalty stationary point to approximate KKT stationarity of the original bilevel problem under its penalty and flatness-accuracy conditions."
+      ],
+      [
+        "How are constrained lower problems handled?",
+        "The PBGD-Free paper analyzes the unconstrained lower problem. The efficient-penalty preprint develops fixed-set and coupled-constraint extensions. Its coupled-constraint method retains an inner solve for the constrained response."
+      ]
+    ],
+    "source": "https://arxiv.org/html/2507.20400v1",
+    "result_note_title": "Stationarity and first-order cost",
+    "example_title": "Upper-loss variation relative to a lower minimizer",
+    "summary_points": [
+      {
+        "text": "PBGD-Free removes the original-response estimate from the penalty-gradient computation. With K = 1, one perturbed lower update and one upper update form each iteration.",
+        "anchor": "idea",
+        "label": "Equation 8 and Algorithm 1"
+      },
+      {
+        "text": "The (δ, α)-flatness condition bounds upper-loss variation from an original lower minimizer. Its residual δ and distance exponent α quantify the bias left by the omitted correction.",
+        "anchor": "technical",
+        "label": "Definition 1"
+      },
+      {
+        "text": "Under the stated smoothness, PL, and flatness conditions, the average squared penalty-gradient norm decays as O(T⁻¹) to a flatness-dependent residual.",
+        "anchor": "technical",
+        "label": "Theorem 3"
+      },
+      {
+        "text": "Under a fixed training-time budget, PBGD-Free has the lowest reported DPO and SFT losses for Llama-3-3b, both at the trained outcome and after head adaptation with the backbone fixed.",
+        "anchor": "evidence-panel-0",
+        "label": "Table 2"
+      }
+    ],
+    "method_title": "A perturbed-response update without the value-function correction",
+    "technical_title": "Flatness, penalty stationarity, and original-problem stationarity"
+  },
+  "smoothness": {
+    "scene": "A large joint penalty does not imply large reduced curvature",
+    "story": [
+      [
+        "The smoothness bound that controls the step",
+        "The joint penalty objective Hγ(x, y) measures changes in both variables. Its O(γ) smoothness bound leads to a penalty-dependent step size. ALT-PBGD and BLOCC instead update the upper variable using the reduced objective Fγ(x), after estimating the lower responses."
+      ],
+      [
+        "Cancellation between constrained value functions",
+        "The reduced objective is γ times the difference between two related lower-level minimum values. Strong convexity controls the change in the lower response, and Hessian regularity controls the resulting change in directional curvature. Analyzing the difference preserves the cancellation of the penalty factor."
+      ],
+      [
+        "From smoothness to complexity",
+        "The O(1) reduced bound permits a step-size order independent of γ. This gives O(ε⁻¹) outer iterations for the squared projected-gradient criterion. The lower-level solver determines the additional cost within each iteration."
+      ]
+    ],
+    "findings": [
+      [
+        "Reduced smoothness",
+        "O(1) in the penalty parameter",
+        "Theorems 1 and 3 establish a smoothness bound independent of γ for the reduced objective under the corresponding constraint regularity conditions.",
+        "technical"
+      ],
+      [
+        "Outer convergence",
+        "O(ε⁻¹) projected updates",
+        "ALT-PBGD and BLOCC use the squared projected-gradient criterion ‖Gη(x)‖² < ε.",
+        "evidence-panel-0"
+      ],
+      [
+        "Total complexity",
+        "The lower solver determines the cost",
+        "The reported overall work is Õ(ε⁻¹) for fixed constraints, O(ε⁻²) for general coupled constraints, and Õ(ε⁻¹) for the affine-in-y case with a full lower domain.",
+        "evidence-panel-1"
+      ]
+    ],
+    "figure": 0,
+    "figure_read": [
+      [
+        "The objective being analyzed",
+        "Joint PBGD uses the O(γ) smoothness bound of Hγ. The reduced analysis of Fγ gives O(1) smoothness under the paper’s assumptions."
+      ],
+      [
+        "The cost of the lower-level solver",
+        "Fixed, general coupled, and affine-in-y constraints lead to different total complexity bounds because the inner minimization or primal-dual solver has a different convergence rate."
+      ],
+      [
+        "The stationarity tolerance",
+        "Table I uses a squared generalized-gradient criterion. Õ suppresses logarithmic factors. The O(ε⁻¹) outer count is separated from total work in Propositions 2 and 4."
+      ]
+    ],
+    "panels": [
+      {
+        "label": "Fixed constraints",
+        "title": "ALT-PBGD under fixed lower constraints",
+        "caption": "Proposition 2 · squared projected-gradient tolerance ε",
+        "columns": [
+          "Update",
+          "Smoothness order",
+          "Outer iterations",
+          "Overall work"
+        ],
+        "rows": [
+          [
+            "Joint PBGD",
+            "O(γ)",
+            "O(ε⁻¹·⁵)",
+            "Õ(ε⁻¹·⁵)"
+          ],
+          [
+            "ALT-PBGD",
+            "O(1)",
+            "O(ε⁻¹)",
+            "Õ(ε⁻¹)"
+          ]
+        ],
+        "reading": "The O(1) reduced smoothness bound allows a constant step-size order. Projected gradient descent solves each strongly convex inner problem with logarithmic work, giving Õ(ε⁻¹) total complexity for ALT-PBGD.",
+        "protocol": "Assumptions 1–4 and a nonempty fixed closed convex lower feasible set. Theorem 1 applies for sufficiently large γ. Proposition 2 measures ‖Gη(x)‖² < ε and counts O(ε⁻¹) outer updates. The total bound uses projected gradient descent as the inner minimization solver. Õ suppresses logarithmic factors.",
+        "source": "4"
+      },
+      {
+        "label": "Coupled constraints",
+        "title": "BLOCC under coupled lower constraints",
+        "caption": "Proposition 4 and Remark 1 · outer rate and total work",
+        "columns": [
+          "Lower-level constraints",
+          "Reduced smoothness",
+          "Outer iterations",
+          "Overall work"
+        ],
+        "rows": [
+          [
+            "General nonlinear coupled",
+            "O(1)",
+            "O(ε⁻¹)",
+            "O(ε⁻²)"
+          ],
+          [
+            "Affine in y; Y = ℝᵈ",
+            "O(1)",
+            "O(ε⁻¹)",
+            "Õ(ε⁻¹)"
+          ]
+        ],
+        "reading": "The reduced smoothness bound gives O(ε⁻¹) outer updates in both regimes. Remark 1 reports O(ε⁻²) total work with the accelerated MaxMin solver for general constraints and Õ(ε⁻¹) with the specified solver when the constraints are affine in y and the lower domain is the full space.",
+        "protocol": "Assumptions 1–5, including strong convexity of the lower objective, constraint qualification, objective and constraint Hessian regularity, and a smooth domain boundary. The stationarity criterion is ‖Gη(x)‖² < ε. Proposition 4 gives the outer count; Remark 1 invokes the respective BLOCC inner solvers for the total bounds.",
+        "source": "4"
+      }
+    ],
+    "application": [
+      "The quadratic illustration",
+      "The plotted quadratic separates a fixed slice of the joint objective from the reduced curve after minimization over y. Increasing γ steepens the fixed slice while leaving Fγ unchanged. The paper’s Example 1 uses different, nonquadratic objectives to illustrate the same distinction."
+    ],
+    "cards": [
+      [
+        "Theorem 1 · Fixed feasible set",
+        "Cancellation in the reduced directional curvature",
+        "For sufficiently large γ, the stated strong-convexity, gradient, Hessian, and constraint assumptions bound the second-order directional derivative of Fγ by O(1). Lemma 3 compares the curvatures of the two constrained value functions.",
+        "3"
+      ],
+      [
+        "Theorem 3 · Coupled feasible set",
+        "Regularity of the moving boundary",
+        "The coupled result adds a smooth boundary for Y and Lipschitz Hessians of the constraints. These conditions extend the directional-curvature comparison to a feasible set depending on x and yield O(1) smoothness for sufficiently large γ.",
+        "4"
+      ]
+    ],
+    "faq": [
+      [
+        "How is the reduced gradient computed?",
+        "ALT-PBGD combines first-order gradients at the original and perturbed lower responses. BLOCC computes the corresponding primal-dual responses and includes constraint-gradient terms through their multipliers. Equations 14 and 17 give the updates."
+      ],
+      [
+        "What do the second-order derivatives do?",
+        "The Hessian and directional-derivative calculations establish the smoothness bound used in the convergence analysis. The analyzed algorithms compute the outer direction with first-order gradients and approximate lower-level solutions."
+      ]
+    ],
+    "source": "https://eurasip.org/Proceedings/Eusipco/Eusipco2025/pdfs/0001183.pdf",
+    "result_note_title": "Work within each outer update",
+    "example_title": "Joint curvature and reduced curvature",
+    "summary_points": [
+      {
+        "text": "The reduced objective Fγ has O(1) smoothness in γ under the paper’s strong-convexity, Hessian, and constraint-regularity conditions. The proof compares directional curvatures of the original and perturbed value functions.",
+        "anchor": "technical",
+        "label": "Theorems 1 and 3"
+      },
+      {
+        "text": "ALT-PBGD achieves O(ε⁻¹) outer iterations for the squared projected-gradient tolerance ε. Projected-gradient inner solves give Õ(ε⁻¹) total work under fixed lower constraints.",
+        "anchor": "evidence-panel-0",
+        "label": "Proposition 2"
+      },
+      {
+        "text": "The coupled-constraint extension preserves the O(ε⁻¹) outer rate. Total work is O(ε⁻²) with the specified general solver and Õ(ε⁻¹) in the affine-in-y, full-domain regime.",
+        "anchor": "evidence-panel-1",
+        "label": "Proposition 4 and Remark 1"
+      }
+    ],
+    "method_title": "Alternating and primal-dual updates for the reduced objective",
+    "technical_title": "Directional-curvature cancellation under constraints"
+  },
+  "blocc": {
+    "scene": "Bilevel optimization on a moving feasible set",
+    "story": [
+      [
+        "Coupled lower-level constraints",
+        "A transportation operator chooses link capacities, while passengers choose routes subject to those capacities. In the SVM application, hyperparameters bound the margin violations permitted during model fitting. Both problems have lower-level constraints that depend on the outer variable."
+      ],
+      [
+        "The boundary contributes to the derivative",
+        "The derivative of the minimum value v(x) depends on how g changes and on how the feasible boundary moves. Omitting the second contribution can reverse the gradient, as Figure 1 demonstrates. The active constraints contribute through their optimal multipliers μ_g^*(x)."
+      ],
+      [
+        "A primal-dual penalty formulation",
+        "BLOCC penalizes the gap between g(x, y) and v(x) and represents the coupled inequalities with a Lagrangian term. This gives two saddle-point problems whose primal-dual solutions determine the outer gradient. The resulting algorithm uses first-order derivatives and projections onto separate domains, avoiding a joint projection onto the coupled feasible set."
+      ]
+    ],
+    "findings": [
+      [
+        "Value-function derivative",
+        "Objective and boundary terms",
+        "Lemma 2 expresses ∇v(x) as the partial objective derivative plus the multiplier-weighted constraint derivative. Figure 1 shows why both terms are needed.",
+        "idea"
+      ],
+      [
+        "SVM test accuracy",
+        "76.7% vs 76.5%",
+        "Table 2 reports diabetes test accuracy of 0.767 ± 0.039 for BLOCC and 0.765 ± 0.039 for LV-HBA. The ± values are standard deviations.",
+        "evidence-panel-0"
+      ],
+      [
+        "SVM runtime",
+        "About 40% lower mean runtime",
+        "On diabetes, the reported mean runtime is 1.729 for BLOCC and 2.899 for LV-HBA at the upper-objective stopping rule. Table 2 reports runtime variability separately.",
+        "evidence-panel-1"
+      ]
+    ],
+    "figure": 0,
+    "figure_read": [
+      [
+        "Constrained response",
+        "Figure 1 uses g(x, y) = (y − 2x)² and g^c(x, y) = 3x − y. For x > 0, the constraint y ≥ 3x is active, giving y_g^*(x) = 3x and v(x) = x²."
+      ],
+      [
+        "Objective derivative",
+        "Evaluating the partial derivative ∇xg at the constrained response gives −4x. The true derivative of v(x) is 2x, so the objective term alone has the opposite sign."
+      ],
+      [
+        "Multiplier correction",
+        "The optimal multiplier is μ_g^*(x) = 2x. Multiplying it by the constraint derivative contributes 6x, restoring the value gradient: −4x + 6x = 2x."
+      ]
+    ],
+    "panels": [
+      {
+        "label": "SVM accuracy",
+        "title": "SVM test accuracy on diabetes and fourclass",
+        "caption": "Table 2 · test accuracy · mean ± standard deviation",
+        "columns": [
+          "Method",
+          "Diabetes",
+          "Fourclass"
+        ],
+        "rows": [
+          [
+            "BLOCC",
+            "0.767 ± 0.039",
+            "0.761 ± 0.014"
+          ],
+          [
+            "LV-HBA",
+            "0.765 ± 0.039",
+            "0.748 ± 0.060"
+          ],
+          [
+            "GAM",
+            "0.721 ± 0.047",
+            "0.715 ± 0.056"
+          ]
+        ],
+        "reading": "On diabetes, BLOCC and LV-HBA have similar mean test accuracy, both with a reported standard deviation of 0.039. On fourclass, their means are 0.761 and 0.748. GAM has lower mean accuracy in both datasets.",
+        "protocol": "Section 4.2 evaluates linear SVM hyperparameter optimization on diabetes and fourclass with γ = 12. Figure 3 reports diabetes trajectories over 50 random train–validation–test splits. Appendix E.2 states that BLOCC and LV-HBA solve Equation 63, while GAM uses the formulation from its original paper because the matrix required by GAM can be singular. Table 2 reports means and standard deviations.",
+        "source": "S4.T2"
+      },
+      {
+        "label": "SVM runtime",
+        "title": "Runtime under the upper-objective stopping rule",
+        "caption": "Table 2 · runtime entries · mean ± standard deviation",
+        "columns": [
+          "Method",
+          "Diabetes",
+          "Fourclass"
+        ],
+        "rows": [
+          [
+            "BLOCC",
+            "1.729 ± 0.529",
+            "1.922 ± 0.108"
+          ],
+          [
+            "LV-HBA",
+            "2.899 ± 1.378",
+            "2.404 ± 0.795"
+          ],
+          [
+            "GAM",
+            "8.752 ± 4.736",
+            "13.481 ± 0.970"
+          ]
+        ],
+        "reading": "BLOCC has the lowest mean runtime in both reported datasets. The diabetes comparison with LV-HBA is about 40% lower, computed from 1.729 and 2.899. These values measure time until the upper-objective update is smaller than 10⁻⁵.",
+        "protocol": "Table 2 uses the upper-objective update threshold of 10⁻⁵ and reports runtime means and standard deviations. Test accuracy is a separate reported metric. The SVM comparisons use the hyperparameters listed in Appendix E.2, including the different GAM formulation described there.",
+        "source": "S4.T2"
+      }
+    ],
+    "application": [
+      "Transportation network design at three scales",
+      "The network experiments choose link capacities while accounting for passenger responses. Table 3 compares 3- and 9-node synthetic networks with a 26-node Seville instance containing 49,216 variables and 13,336 constraints. With γ = 4 and step size 1.6 × 10⁻⁴, BLOCC records runtime 6.70 × 10⁴ seconds and operator utility 138.78 on the Seville instance. LV-HBA does not reach convergence within the 24-hour limit on the 9-node or Seville instances. The transportation comparison uses LV-HBA as the baseline."
+    ],
+    "cards": [
+      [
+        "Lemma 2",
+        "The lower-level value has a constraint-sensitive gradient",
+        "Under Assumptions 1–4 and bounded optimal multipliers, v(x) is smooth. Its gradient includes both the partial derivative of g and the multiplier-weighted partial derivative of g^c. The boundary term is what restores the correct derivative in Figure 1.",
+        "S2.SS3"
+      ],
+      [
+        "Theorems 1–4",
+        "Approximation and finite-time convergence",
+        "Theorem 1 controls the squared distance from the penalized response to y_g^*(x). The outer criterion is an averaged squared generalized-gradient norm for Fγ. Including the two inner saddle-point solves, the general analysis gives Õ(ε⁻²·⁵) total iterations under Assumptions 1–5. For affine-in-y constraints, an unconstrained lower domain, and the singular-value conditions in Theorem 4, the inner solver converges linearly and total complexity is Õ(ε⁻¹·⁵). The Õ notation suppresses logarithmic factors.",
+        "S3"
+      ]
+    ],
+    "faq": [
+      [
+        "Why are two primal-dual problems solved?",
+        "The original lower-level problem provides y_g^*(x), μ_g^*(x), and the value gradient. The penalized problem provides y_F^*(x) and μ_F^*(x). Their contributions appear together in Equation 9, which Algorithm 1 estimates before updating x."
+      ],
+      [
+        "Which projection does the formulation remove?",
+        "BLOCC avoids projecting the pair (x, y) onto the coupled feasible set. It retains projections onto the separate domains X and Y and onto the nonnegative multiplier domain."
+      ],
+      [
+        "What is the convergence target?",
+        "The analysis bounds the averaged squared generalized-gradient criterion of Fγ. A separate approximation result controls the squared distance from the penalized lower response to y_g^*(x). The total complexity includes the inner work required to estimate both primal-dual responses."
+      ]
+    ],
+    "source": "https://arxiv.org/html/2406.10148v2",
+    "result_note_title": "Outer progress and inner solution accuracy",
+    "example_title": "An active constraint can reverse the objective-only gradient",
+    "method_title": "Two saddle-point solves per outer update",
+    "technical_title": "Primal-dual reformulation and convergence",
+    "summary_points": [
+      {
+        "text": "In Figure 1, for a positive upper variable x, the multiplier-weighted constraint derivative changes the objective-only derivative −4x into the correct value gradient 2x.",
+        "anchor": "idea",
+        "label": "Lemma 2 · Figure 1"
+      },
+      {
+        "text": "BLOCC uses first-order primal-dual subproblem solves and separate-domain projections. Including the inner solves, total iteration complexity is Õ(ε⁻²·⁵) in the general regime and Õ(ε⁻¹·⁵) in the affine-in-y regime, where ε is the target squared generalized-gradient tolerance.",
+        "anchor": "technical",
+        "label": "Theorems 2–4"
+      },
+      {
+        "text": "On diabetes, Table 2 reports similar test accuracy for BLOCC and LV-HBA, with lower mean runtime for BLOCC under the reported stopping rule.",
+        "anchor": "evidence-panel-0",
+        "label": "Table 2"
+      },
+      {
+        "text": "The Seville network experiment contains 49,216 variables and 13,336 constraints. BLOCC reaches convergence in the reported runs while LV-HBA exceeds the 24-hour limit.",
+        "anchor": "interactive",
+        "label": "Table 3"
+      }
+    ]
+  }
+}

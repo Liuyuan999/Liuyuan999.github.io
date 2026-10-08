@@ -1,0 +1,67 @@
+{
+  "ordering": "SURF first at the author’s request; remaining papers by publication year descending, then public release month.",
+  "release_months": {
+    "retailagent": "2026-08",
+    "surf": "2026-05",
+    "birq": "2025-09",
+    "efficient-penalty": "2025-11",
+    "smoothness": "2025-09",
+    "pbgd-free": "2025-07",
+    "blocc": "2024-06"
+  },
+  "date_sources": {
+    "arxiv": "The YYMM prefix of the primary arXiv identifier records the submission month.",
+    "smoothness": "https://eurasip.org/Proceedings/Eusipco/Eusipco2025/HTML/index.html"
+  },
+  "paper_labels": {
+    "efficient-penalty": "Penalty methods",
+    "pbgd-free": "PBGD-Free",
+    "smoothness": "Reduced smoothness",
+    "blocc": "BLOCC",
+    "surf": "SURF",
+    "retailagent": "RetailAgent",
+    "birq": "BiRQ"
+  },
+  "visual_evidence": {
+    "surf": "Section 2 and Figures 1–2: nonuniform traversal speed and inverse arc-length CDF; Theorem 1 requires regularity and has a finite-sampling floor.",
+    "retailagent": "Sections 2.1 and 3.2.1, Table 1: exposure-matched timing; intact −45.7 bps, global shuffle −3.5, same-day −8.7. The bar preview uses signed values and the reported date-bootstrap confidence intervals.",
+    "birq": "Section 3, Figure 1, Algorithm 1: reuse intermediate encoder features, preserve raw-input anchors, use differentiable enhanced labels; original architecture chosen over a generic WER thumbnail.",
+    "efficient-penalty": "Theorems 1 and 4, Figure 3: reduced O(1) smoothness with regime-specific assumptions; fully single-loop PBGD-Free is restricted to uncoupled constraints.",
+    "pbgd-free": "Definition 1, Algorithm 1, Theorem 3, Figure 1: single-step lower update, no value-function loop; flatness controls omitted-gradient bias.",
+    "smoothness": "Section III and IV, Table I: directional-derivative cancellation. Home preview is the exact toy H=x²/2+γ(y−x)² at γ=5 and F=min_y H=x²/2, not experimental data.",
+    "blocc": "Section 2.1, Equation 8, Figure 1: the value-function gradient includes the multiplier contribution from moving constraints."
+  },
+  "display_priority": [
+    "surf"
+  ],
+  "direction_papers": {
+    "surf": {
+      "headline": "SURF · Cover the Pareto front evenly",
+      "idea": "Sample scalarization weights using the geometry of the trade-off curve."
+    },
+    "efficient-penalty": {
+      "headline": "Penalty methods · Rethink the cost of an update",
+      "idea": "Sharper smoothness analysis, alternating updates, and flatness across constraint regimes."
+    },
+    "pbgd-free": {
+      "headline": "PBGD-Free · Remove the value-function loop",
+      "idea": "Upper-level flatness bounds the bias from a simplified one-step-per-level update."
+    },
+    "smoothness": {
+      "headline": "Smoothness · Follow the lower-level response",
+      "idea": "Study reduced curvature to sharpen penalty-method iteration bounds."
+    },
+    "blocc": {
+      "headline": "BLOCC · Account for moving constraints",
+      "idea": "Use primal-dual information when the leader changes the follower’s feasible set."
+    },
+    "birq": {
+      "headline": "BiRQ · Let a speech model improve its targets",
+      "idea": "Refine labels from intermediate features, with raw-input targets anchoring training."
+    },
+    "retailagent": {
+      "headline": "RetailAgent · Audit the timing of LLM decisions",
+      "idea": "Separate market exposure from entry and exit timing, then test self-conditioning."
+    }
+  }
+}

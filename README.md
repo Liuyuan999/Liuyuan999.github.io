@@ -70,3 +70,12 @@ Some examples:
 - AcadHomepage incorporates Font Awesome, which is distributed under the terms of the SIL OFL 1.1 and MIT License.
 - AcadHomepage is influenced by the github repo [mmistakes/minimal-mistakes](https://github.com/mmistakes/minimal-mistakes), which is distributed under the MIT License.
 - AcadHomepage is influenced by the github repo [academicpages/academicpages.github.io](https://github.com/academicpages/academicpages.github.io), which is distributed under the MIT License.
+
+
+## Research project pages
+
+The research website lives at https://liuyuan999.github.io/research/. Its editable source is in `research-source/`. The homepage navigation and publication entries link to the project pages; the research website links back to the academic homepage.
+
+`.github/workflows/pages.yml` builds the Jekyll homepage, generates the research site with Python and Node.js, and deploys both to GitHub Pages on pushes to `main`. The original homepage content and theme are retained.
+
+To edit research content, update the JSON files in `research-source/content/`. To preview it locally, run `python3 research-source/build.py` and serve `research-source/dist/`. Video links remain disabled in `research-source/content/site.json`. To connect a domain, use this repository’s Settings → Pages.

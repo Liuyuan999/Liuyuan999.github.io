@@ -1,0 +1,104 @@
+{
+  "surf": [
+    {
+      "file": "surf-figure1.png",
+      "label": "Figure 1 · Scalarization and Pareto-front spacing",
+      "caption": "The paper’s bandit example compares points produced by uniform weights with points from geometry-aware sampling. Even spacing in weight space does not imply even spacing on the Pareto front.",
+      "alt": "Original SURF Figure 1: uniformly spaced weights and geometry-aware weights produce different coverage of the Pareto front.",
+      "source": "https://arxiv.org/html/2605.20619v1#S1.F1",
+      "asset_source": "https://arxiv.org/html/2605.20619v1/figures/gear_w_PF.png",
+      "width": 1150,
+      "height": 715,
+      "preview": true
+    },
+    {
+      "file": "surf-figure2.png",
+      "label": "Figure 2 · The SURF procedure",
+      "caption": "SURF connects weights to arc length through a CDF. When the map is known, it is inverted directly; otherwise the method alternates between scalarized solves and CDF reconstruction.",
+      "alt": "Original SURF overview showing the known-CDF rule and the iterative sampling, inner-solver, and CDF-estimation rule.",
+      "source": "https://arxiv.org/html/2605.20619v1#S1.F2",
+      "asset_source": "https://arxiv.org/html/2605.20619v1/figures/flow_chart.png",
+      "width": 2589,
+      "height": 1159
+    }
+  ],
+  "birq": [
+    {
+      "file": "birq-figure1.png",
+      "label": "Figure 1 · Two sources of speech-learning targets",
+      "caption": "A shared encoder processes unmasked speech to generate enhanced targets from intermediate features through Gumbel-softmax selection. A fixed random quantizer maps raw input to anchoring targets. The masked prediction task learns from both branches, with gradients through enhanced-target generation.",
+      "alt": "Original BiRQ architecture: a shared speech encoder generates enhanced labels from intermediate features, alongside anchoring labels from raw input.",
+      "source": "https://arxiv.org/html/2509.15430v1#S1.F1",
+      "asset_source": "https://arxiv.org/html/2509.15430v1/figure/BiRQ.png",
+      "width": 1938,
+      "height": 2057,
+      "preview": true,
+      "portrait": true
+    }
+  ],
+  "pbgd-free": [
+    {
+      "file": "pbgd-free-figure1.png",
+      "label": "Figure 1 · Single-loop update structure",
+      "caption": "The diagram compares the original and perturbed response updates in V-PBGD and F2SA with PBGD-Free’s single-loop update. With K = 1, PBGD-Free takes one perturbed-response step followed by one upper-variable step. The flatness analysis bounds the omitted original-response correction.",
+      "alt": "Original update comparison: V-PBGD and F2SA have inner refinements; PBGD-Free has one lower step followed by an upper step.",
+      "source": "https://arxiv.org/html/2507.20400v1#S1.F2",
+      "asset_source": "https://arxiv.org/html/2507.20400v1/Figure/PBGD-flow.png",
+      "width": 2277,
+      "height": 655,
+      "preview": true
+    }
+  ],
+  "blocc": [
+    {
+      "file": "blocc-figure1.png",
+      "label": "Figure 1 · The missing constraint contribution",
+      "caption": "In the paper’s example, the value-function gradient includes a Lagrange-multiplier term. Omitting that term can reverse the descent direction. This is why the coupled constraints enter BLOCC’s primal-dual formulation.",
+      "alt": "Original BLOCC Figure 1 comparing the value function with gradients computed with and without the constraint multiplier.",
+      "source": "https://arxiv.org/html/2406.10148v2#S2.F1",
+      "asset_source": "https://arxiv.org/html/2406.10148v2/images/value_grad.png",
+      "width": 1120,
+      "height": 840,
+      "preview": true
+    }
+  ],
+  "efficient-penalty": [
+    {
+      "file": "efficient-penalty-figure3.svg",
+      "label": "Figure 3 · Joint gradients versus reduced gradients",
+      "caption": "Example 3 compares the upper partial gradient of the joint penalty objective with the reduced-objective gradient at different penalty values. Evaluating along the optimized lower response reveals the cancellation analyzed by the reduced-smoothness theorems.",
+      "alt": "Original penalty-method Figure 3 comparing joint-gradient spheres and reduced-gradient lines for different penalty constants.",
+      "source": "https://arxiv.org/html/2511.16796v1#S3.F3",
+      "asset_source": "https://arxiv.org/html/2511.16796v1/gradient.svg",
+      "width": 724,
+      "height": 656,
+      "preview": true
+    }
+  ],
+  "retailagent": [
+    {
+      "file": "retailagent-figure2.png",
+      "label": "Figure 2 · Observation, action, and self-conditioning",
+      "caption": "Numerical-text, visual, memory, and learned soft-token pathways into RetailAgent’s frozen LLM. Numerical-text histories use completed intervals. The chart and encoder branches use archived reconstructed one-minute inputs, whose provenance is documented in Appendix A.1.",
+      "alt": "RetailAgent architecture with text and vision inputs, a self-authored memory route, and a GRU-and-adapter soft-token branch connected to a frozen LLM and a long-or-flat action.",
+      "source": "https://arxiv.org/pdf/2608.28399v1#page=3",
+      "asset_source": "https://arxiv.org/pdf/2608.28399v1",
+      "width": 1452,
+      "height": 708,
+      "extraction": "Figure 2 cropped from PDF page 3; arXiv HTML omits this diagram."
+    }
+  ],
+  "smoothness": [
+    {
+      "file": "smoothness-table1.png",
+      "label": "Table I · The constraint regime changes the complexity",
+      "caption": "Table I separates fixed, general coupled, and affine-in-y constraints. The complexity column combines outer iterations with the work of the lower-level solver for each regime.",
+      "alt": "Original EUSIPCO Table I comparing smoothness and total complexity across fixed, nonlinear coupled, and affine lower-level constraint regimes.",
+      "source": "https://eurasip.org/Proceedings/Eusipco/Eusipco2025/pdfs/0001183.pdf#page=2",
+      "asset_source": "https://eurasip.org/Proceedings/Eusipco/Eusipco2025/pdfs/0001183.pdf",
+      "width": 1004,
+      "height": 474,
+      "extraction": "Table I cropped from the original proceedings PDF page 2."
+    }
+  ]
+}

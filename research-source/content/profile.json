@@ -1,0 +1,35 @@
+{
+  "name": "Liuyuan Jiang",
+  "role": "PhD student · Electrical & Computer Engineering",
+  "institution": "University of Rochester",
+  "links": [
+    {
+      "label": "Academic profile",
+      "url": "https://liuyuan999.github.io/"
+    },
+    {
+      "label": "Google Scholar",
+      "url": "https://scholar.google.com/citations?hl=en&user=7_BnQ3UAAAAJ"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/Liuyuan999"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:ljiang24@ur.rochester.edu"
+    }
+  ],
+  "verified": "2026-10-08",
+  "sources": [
+    "https://liuyuan999.github.io/",
+    "https://github.com/Liuyuan999"
+  ],
+  "photo": {
+    "file": "liuyuan-jiang.png",
+    "width": 1122,
+    "height": 1402,
+    "source": "User-supplied jiang.PNG, preserved unchanged"
+  },
+  "email": "ljiang24@ur.rochester.edu"
+}
